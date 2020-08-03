@@ -21,7 +21,7 @@
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/assets/img/bitbug_favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -85,6 +85,9 @@
 					<a class="mail" target="_blank" href="/baozean@gmail.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
+			
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=240 height=86 src="//music.163.com/outchain/player?type=2&id=5388845&auto=1&height=66"></iframe>
+			
 		</nav>
 	</header>		
 </div>
@@ -188,7 +191,10 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我的博客名</span><br><span class="line">date: 2020-08-02 19:51:54</span><br><span class="line">tags: </span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>添加多个标签的方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: [python,css,html]</span><br></pre></td></tr></table></figure>
-<h2 id="注意tags后面一定要加空格，适用于所有的属性，多个tags用-括起来，中间用-隔开"><a href="#注意tags后面一定要加空格，适用于所有的属性，多个tags用-括起来，中间用-隔开" class="headerlink" title="注意tags后面一定要加空格，适用于所有的属性，多个tags用[]括起来，中间用,隔开"></a>注意tags后面一定要加空格，适用于所有的属性，多个tags用<code>[]</code>括起来，中间用<code>,</code>隔开</h2>
+<h2 id="注意tags后面一定要加空格，适用于所有的属性，多个tags用-括起来，中间用-隔开"><a href="#注意tags后面一定要加空格，适用于所有的属性，多个tags用-括起来，中间用-隔开" class="headerlink" title="注意tags后面一定要加空格，适用于所有的属性，多个tags用[]括起来，中间用,隔开"></a>注意tags后面一定要加空格，适用于所有的属性，多个tags用<code>[]</code>括起来，中间用<code>,</code>隔开</h2><p><strong>5.设置网站ico</strong><br>去一个在线转换图标的网站制作ico图标<br>将图片放到blog/source/img文件夹下(<code>最好放在source,但其实只要保证相对路径正确即可</code>)<br>找到<code>blog\themes\yilia\layout\_partial\head.ejs</code>文件<br>设置为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.favicon)&#123; %&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;icon&quot; href&#x3D;&quot;&#x2F;img&#x2F;favicon.ico&quot;&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>注意</p>
+
       
 
       
@@ -380,7 +386,7 @@
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
