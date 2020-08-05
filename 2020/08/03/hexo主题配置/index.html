@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.博客左侧显示总文章数打开themes&#x2F;yilia&#x2F;layout&#x2F;_partial&#x2F;left-col.ejs文件通过ctrl+f找到下面的片段 1234567&lt;nav class&#x3D;&quot;header-menu&quot;&gt;&lt;ul&gt;&lt;% for (var i in theme.menu)&amp;#123; %&gt;&lt;li&gt;&lt;a href">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-03T08:58:18.000Z">
-<meta property="article:modified_time" content="2020-08-03T13:04:15.616Z">
+<meta property="article:modified_time" content="2020-08-03T13:50:16.617Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="个人博客">
@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 2
+			总文章数 4
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -196,7 +196,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: [python,css,html]</span><br></pre></td></tr></table></figure>
 <h2 id="注意tags后面一定要加空格，适用于所有的属性，多个tags用-括起来，中间用-隔开"><a href="#注意tags后面一定要加空格，适用于所有的属性，多个tags用-括起来，中间用-隔开" class="headerlink" title="注意tags后面一定要加空格，适用于所有的属性，多个tags用[]括起来，中间用,隔开"></a>注意tags后面一定要加空格，适用于所有的属性，多个tags用<code>[]</code>括起来，中间用<code>,</code>隔开</h2><p><strong>5.设置网站ico</strong><br>去一个在线转换图标的网站制作ico图标<br>将图片放到blog/source/img文件夹下(<code>最好放在source,但其实只要保证相对路径正确即可</code>)<br>找到<code>blog\themes\yilia\layout\_partial\head.ejs</code>文件<br>设置为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.favicon)&#123; %&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;icon&quot; href&#x3D;&quot;&#x2F;img&#x2F;favicon.ico&quot;&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>注意</p>
+<h2 id="注意favicon-ico换回自己的文件名"><a href="#注意favicon-ico换回自己的文件名" class="headerlink" title="注意favicon.ico换回自己的文件名"></a><code>注意favicon.ico换回自己的文件名</code></h2><p><strong>6.author,subtitle不显示的终极大招</strong><br>不知道为什么我的出现了author与subtitle不显示的问题<br><br>可能是hexo版本太高，我的是5.0的版本</p>
 
       
 
@@ -318,6 +318,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/04/%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2-%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          平面坐标变换-矩阵形式
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/02/python%E8%AF%BB%E5%8F%96%E5%9B%BE%E7%89%87%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
@@ -460,6 +469,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">图片读取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵概念的背景</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
               </li>
             
             <div class="clearfix"></div>
