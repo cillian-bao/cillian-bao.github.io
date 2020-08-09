@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Markdown中的一些语法 | cillianの个人站</title>
+  <title>Tag: ros | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 数学公式">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Markdown中的一些语法">
-<meta property="og:url" content="http://yoursite.com/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/index.html">
+  <meta name="description" content="个人记录分享网站">
+<meta property="og:type" content="website">
+<meta property="og:title" content="cillianの个人站">
+<meta property="og:url" content="http://yoursite.com/tags/ros/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="1. 数学公式">
+<meta property="og:description" content="个人记录分享网站">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-04T01:08:03.000Z">
-<meta property="article:modified_time" content="2020-08-09T15:45:52.851Z">
 <meta property="article:author" content="泽安的个人站">
-<meta property="article:tag" content="markdown语法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
@@ -157,196 +154,193 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Markdown中的一些语法" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Markdown中的一些语法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E8%AF%9D%E9%A2%98-topic/" class="archive-article-date">
+  	<time datetime="2020-08-09T14:29:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E8%AF%9D%E9%A2%98-topic/">ros通信方式入门-话题(topic)</a>
     </h1>
   
 
-        
-        <a href="/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-08-04T01:08:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1. 数学公式</strong><br><a id="more"></a><br>　　markdown中的数学公式与latex中的数学公式语法通用<br>具体：行内公式：$ $<br>　　　行间公式：$$ $$</p>
-<hr>
-<p><strong>2. 公式后的序号</strong><br>　　例如下面的公式(3)</p>
-<script type="math/tex; mode=display">x=2 \tag{3}</script><p><code>注意\tag&#123;n&#125;只在行间公式有用</code></p>
-<hr>
-<p><strong>3.latex中普通公式中的换行与对齐</strong><br>　　在使用KaTex(latex的渲染器)的latex编辑器中，有很多方案是不能用的,比如<code>\begin&#123;align&#125; \end&#123;align&#125;</code>是不受支持的。<br>　　我们使用aligned可以达到同样的目的，这样就可以在其中使用<code>\\</code>进行换行，由于默认的对齐方式为右对齐，所以左对齐时需要在每个公式开头使用<code>&amp;</code><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">&amp;x<span class="emphasis">_2=x_</span>1-y<span class="emphasis">_1*tan&#123;\alpha&#125;\\</span></span><br><span class="line"><span class="emphasis">&amp;y_</span>2=y<span class="emphasis">_1</span></span><br><span class="line"><span class="emphasis">\end&#123;aligned&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure><br>具体的显示效果:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&x_2=x_1-y_1*tan{\alpha}\\
-&y_2=y_1
-\end{aligned}</script><hr>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/img/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">markdown语法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">话题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">消息</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros//" class="article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros/通信机制//" class="article-tag-list-link color5">通信机制</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          ros初步设置
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/08/04/%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2-%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">平面坐标变换-矩阵形式</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E5%8A%A8%E4%BD%9C-action/" class="archive-article-date">
+  	<time datetime="2020-08-09T14:29:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E5%8A%A8%E4%BD%9C-action/">ros通信方式入门-动作(action)</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">动作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros//" class="article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros/通信机制//" class="article-tag-list-link color5">通信机制</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-08-08T13:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/">ros初步设置</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">虚拟机通信IP设置</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros//" class="article-tag-list-link color4">ros</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
+    
 
 
           </div>
@@ -369,9 +363,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		toc_hide_index: true,

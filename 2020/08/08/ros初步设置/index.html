@@ -6,20 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Markdown中的一些语法 | cillianの个人站</title>
+  <title>ros初步设置 | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 数学公式">
+  <meta name="description" content="1. ubuntu中环境变量.bashrc的设置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown中的一些语法">
-<meta property="og:url" content="http://yoursite.com/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="ros初步设置">
+<meta property="og:url" content="http://yoursite.com/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="1. 数学公式">
+<meta property="og:description" content="1. ubuntu中环境变量.bashrc的设置">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-04T01:08:03.000Z">
-<meta property="article:modified_time" content="2020-08-09T15:45:52.851Z">
+<meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/ROS_MASTER.png">
+<meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/ifconfig.PNG">
+<meta property="article:published_time" content="2020-08-08T13:50:43.000Z">
+<meta property="article:modified_time" content="2020-08-09T15:46:19.918Z">
 <meta property="article:author" content="泽安的个人站">
-<meta property="article:tag" content="markdown语法">
+<meta property="article:tag" content="ros">
+<meta property="article:tag" content="虚拟机通信IP设置">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qejqy1ctj.bkt.clouddn.com/ROS_MASTER.png">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
   
@@ -157,37 +161,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Markdown中的一些语法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ros初步设置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Markdown中的一些语法
+      ros初步设置
     </h1>
   
 
         
-        <a href="/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-08-04T01:08:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
+        <a href="/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2020-08-08T13:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. 数学公式</strong><br><a id="more"></a><br>　　markdown中的数学公式与latex中的数学公式语法通用<br>具体：行内公式：$ $<br>　　　行间公式：$$ $$</p>
-<hr>
-<p><strong>2. 公式后的序号</strong><br>　　例如下面的公式(3)</p>
-<script type="math/tex; mode=display">x=2 \tag{3}</script><p><code>注意\tag&#123;n&#125;只在行间公式有用</code></p>
-<hr>
-<p><strong>3.latex中普通公式中的换行与对齐</strong><br>　　在使用KaTex(latex的渲染器)的latex编辑器中，有很多方案是不能用的,比如<code>\begin&#123;align&#125; \end&#123;align&#125;</code>是不受支持的。<br>　　我们使用aligned可以达到同样的目的，这样就可以在其中使用<code>\\</code>进行换行，由于默认的对齐方式为右对齐，所以左对齐时需要在每个公式开头使用<code>&amp;</code><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">&amp;x<span class="emphasis">_2=x_</span>1-y<span class="emphasis">_1*tan&#123;\alpha&#125;\\</span></span><br><span class="line"><span class="emphasis">&amp;y_</span>2=y<span class="emphasis">_1</span></span><br><span class="line"><span class="emphasis">\end&#123;aligned&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure><br>具体的显示效果:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&x_2=x_1-y_1*tan{\alpha}\\
-&y_2=y_1
-\end{aligned}</script><hr>
+        <p><strong>1. ubuntu中环境变量.bashrc的设置</strong><br><a id="more"></a><br>　　Ros是建立在通信机制上，所以对于网络设置要特别注意,我们分两种情况来看<code>~/.bashrc</code>中的ip设置<br>　　①:两个运行ros系统的硬件相互通信<br>　　进行以下步骤之前将TurtleBot(硬件设备1)和Remote PC都连接到同一个网络的同一个网段下<br><img src="http://qejqy1ctj.bkt.clouddn.com/ROS_MASTER.png" alt="通信IP设置"></p>
+<ul>
+<li>[TurtleBot &amp;&amp; RemotePC]执行<code>ifconfig</code>命令获得对应的IP地址:<br><code>ubuntu@Turtlebot3-virtual-machine:~/catkin_test$ ifconfig</code><br>一般的得到的结果:<br><img src="http://qejqy1ctj.bkt.clouddn.com/ifconfig.PNG" alt="ifconfig的结果"><br>上图第一个白线遮盖的地方就是ip地址</li>
+<li>假设Remote PC的IP地址为:<code>192.168.0.100</code>,TurtleBot的IP地址为<code>192.168.0.101</code><br>[TurtleBot &amp;&amp; RemotePC]执行<code>gedit ~/.bashrc</code>修改<code>根目录</code>下的.bashrc文件(一定是根目录下的,这才能设置全局环境变量)<br><code>ubuntu@Turtlebot3-virtual-machine:~/catkin_test$ gedit ~/.bashrc</code><br>分别找到两个文件中的如下位置<br><code>ROS_MASTER 运行在Remote PC上</code></li>
+<li>TurtleBot设置(注意与上面的一一对应)为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ROS_MASTER_URI&#x3D;http:&#x2F;&#x2F;192.168.0.100:11311</span><br><span class="line">export ROS_HOSTNAME&#x3D;192.168.0.101</span><br></pre></td></tr></table></figure></li>
+<li>Remote PC设置(注意与上面的一一对应)为<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ROS_MASTER_URI&#x3D;http:&#x2F;&#x2F;192.168.0.100:11311</span><br><span class="line">export ROS_HOSTNAME&#x3D;192.168.0.100</span><br></pre></td></tr></table></figure>
+<em>[TurtleBot &amp;&amp; Remote PC] 让环境生效<br><code>ubuntu@Turtlebot3-virtual-machine:~/catkin_test$ source ~/.bashrc</code><br>　　②:单个ros系统运行<br>　　相当于单个Remote PC运行的状态,但是依然需要考虑通信的问题,将上面一种情况改成对一个进行即可<br><em>*2. 一些不常用的命令的记录</em></em></li>
+<li>查看安装的ros版本号<br>在一个terminal下输入<code>roscore</code><br>重启第二个terminal输入<code>rosparam list</code>,再输入<code>rosparam get/rosdistro</code></li>
+<li><code>rospy.loginfo</code>用以在python接口的ros程序中输出想输出的状态<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rospy.loginfo(&#39;Listener:GPS:distance&#x3D;%f,state&#x3D;%s&#39;,distance,gps.state)</span><br></pre></td></tr></table></figure>
+其中的输出可以由自己定义</li>
+</ul>
+<p><strong>3. 虚拟机IP地址发生变化而导致的ros无法通信</strong><br>　　如果不知道虚拟机的IP地址会变,真的会很急啊,冲动到重装,233333</p>
+<blockquote>
+<p>原因:</p>
+<blockquote>
+<ul>
+<li>虚拟机在NAT模式下由Vmware8虚拟网卡提供虚拟机的IP分配</li>
+<li>虚拟机在网桥模式下由Vmware1来提供IP分配</li>
+</ul>
+</blockquote>
+<p>它们都相当于一个小型的DHCP服务器，除非改动虚拟机的网络连接方式，或动了虚拟网卡服务属性，那么虚拟机的IP租约过期后，IP就会自动重新分配，从而造成IP地址自行变化</p>
+</blockquote>
+<p>我们暂时不使用相关的办法解决,而每次通过ifconfig获得最新的ip更改~/.bashrc中的ip来解决<br><strong>4. 关于话题,服务,动作三种通信机制的比较</strong><br>我们知道ROS有消息机制，有服务机制。一个异步的通讯机制，一个同步的通讯机制，难道这还不够用吗？答案是不够,因为服务机制在要求异步而且响应时间不定的场景下有先天的劣势，如果服务端迟迟没有响应，那么客户端程序将处于阻塞状态，直到超时。这会使操作变得相当耗时。</p>
 
       
 
@@ -232,13 +248,28 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">markdown语法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">虚拟机通信IP设置</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros//" class="article-tag-list-link color4">ros</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -288,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +333,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/08/09/python%E9%94%99%E8%AF%AF%EF%BC%9A-%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98-SyntaxError-Non-ASCII-character-xe2-in-file/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          ros初步设置
+          python错误：(编码问题)SyntaxError: Non-ASCII character &#39;â&#39; in file
         
       </div>
     </a>
   
   
-    <a href="/2020/08/04/%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2-%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">平面坐标变换-矩阵形式</div>
+    <a href="/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Markdown中的一些语法</div>
       <i class="icon-circle-right"></i>
     </a>
   

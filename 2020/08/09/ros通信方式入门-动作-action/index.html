@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Markdown中的一些语法 | cillianの个人站</title>
+  <title>ros通信方式入门-动作(action) | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 数学公式">
+  <meta name="description" content="1.什么是action?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Markdown中的一些语法">
-<meta property="og:url" content="http://yoursite.com/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="ros通信方式入门-动作(action)">
+<meta property="og:url" content="http://yoursite.com/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E5%8A%A8%E4%BD%9C-action/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="1. 数学公式">
+<meta property="og:description" content="1.什么是action?">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-08-04T01:08:03.000Z">
-<meta property="article:modified_time" content="2020-08-09T15:45:52.851Z">
+<meta property="article:published_time" content="2020-08-09T14:29:21.000Z">
+<meta property="article:modified_time" content="2020-08-09T15:50:25.053Z">
 <meta property="article:author" content="泽安的个人站">
-<meta property="article:tag" content="markdown语法">
+<meta property="article:tag" content="ros">
+<meta property="article:tag" content="动作">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
@@ -157,37 +158,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Markdown中的一些语法" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ros通信方式入门-动作-action" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Markdown中的一些语法
+      ros通信方式入门-动作(action)
     </h1>
   
 
         
-        <a href="/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-08-04T01:08:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
+        <a href="/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E5%8A%A8%E4%BD%9C-action/" class="archive-article-date">
+  	<time datetime="2020-08-09T14:29:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. 数学公式</strong><br><a id="more"></a><br>　　markdown中的数学公式与latex中的数学公式语法通用<br>具体：行内公式：$ $<br>　　　行间公式：$$ $$</p>
-<hr>
-<p><strong>2. 公式后的序号</strong><br>　　例如下面的公式(3)</p>
-<script type="math/tex; mode=display">x=2 \tag{3}</script><p><code>注意\tag&#123;n&#125;只在行间公式有用</code></p>
-<hr>
-<p><strong>3.latex中普通公式中的换行与对齐</strong><br>　　在使用KaTex(latex的渲染器)的latex编辑器中，有很多方案是不能用的,比如<code>\begin&#123;align&#125; \end&#123;align&#125;</code>是不受支持的。<br>　　我们使用aligned可以达到同样的目的，这样就可以在其中使用<code>\\</code>进行换行，由于默认的对齐方式为右对齐，所以左对齐时需要在每个公式开头使用<code>&amp;</code><br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">&amp;x<span class="emphasis">_2=x_</span>1-y<span class="emphasis">_1*tan&#123;\alpha&#125;\\</span></span><br><span class="line"><span class="emphasis">&amp;y_</span>2=y<span class="emphasis">_1</span></span><br><span class="line"><span class="emphasis">\end&#123;aligned&#125;</span></span><br><span class="line"><span class="emphasis">$$</span></span><br></pre></td></tr></table></figure><br>具体的显示效果:</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-&x_2=x_1-y_1*tan{\alpha}\\
-&y_2=y_1
-\end{aligned}</script><hr>
+        <p><strong>1.什么是action?</strong><br><a id="more"></a><br>　　action机制从原理上看的话，其实是<code>基于topic</code>实现的，相当于制定了一套由<code>目标话题，反馈话题，结果话题</code>组成的高级协议。action实现了一种类似于service的请求/响应通讯机制，区别在于action带有<code>反馈机制</code>，用来不断向客户端反馈任务的进度，并且还支持在任务<code>中途中止运行</code>。<br>　　操作起来就像这样子，客户端给服务端抛出一个目标，然后客户端就可以去干别的事情了，在任务执行期间，客户端会以消息的形式，<code>周期性</code>地接收到来自服务端的进度反馈，如果没有终止任务的话这个过程会一直延续到收到最终的结果。当然也可以随时终止当前的操作，开始一个全新的操作。</p>
+<p><strong>2.动作.action文件的书写格式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#part1: the goal, to be sent by the client</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">#part2: the result, to be sent by the server upon completion</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">#part3: the feedback, to be sent by server during execution</span><br></pre></td></tr></table></figure><br><strong>3. 自定义动作(action)时<code>package.xml</code>的修改</strong><br>　　除了<code>CMakeLists.txt</code>中的修改,还需要修改<code>package.xml</code>,在其中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;build_depend&gt;actionlib_msgs&lt;&#x2F;build_depend&gt;</span><br><span class="line">&lt;exec_depend&gt;actionlib_msgs&lt;&#x2F;exec_depend&gt;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -232,13 +224,32 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">markdown语法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">动作</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros//" class="article-tag-list-link color4">ros</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/ros/通信机制//" class="article-tag-list-link color5">通信机制</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -288,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/04/Markdown%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AF%AD%E6%B3%95/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E5%8A%A8%E4%BD%9C-action/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -302,18 +313,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/08/08/ros%E5%88%9D%E6%AD%A5%E8%AE%BE%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/08/09/ros%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F%E5%85%A5%E9%97%A8-%E8%AF%9D%E9%A2%98-topic/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          ros初步设置
+          ros通信方式入门-话题(topic)
         
       </div>
     </a>
   
   
-    <a href="/2020/08/04/%E5%B9%B3%E9%9D%A2%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2-%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">平面坐标变换-矩阵形式</div>
+    <a href="/2020/08/09/python%E9%94%99%E8%AF%AF%EF%BC%9A-%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98-SyntaxError-Non-ASCII-character-xe2-in-file/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python错误：(编码问题)SyntaxError: Non-ASCII character &#39;â&#39; in file</div>
       <i class="icon-circle-right"></i>
     </a>
   
