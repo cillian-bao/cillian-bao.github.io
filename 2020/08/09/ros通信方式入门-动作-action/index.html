@@ -15,12 +15,15 @@
 <meta property="og:site_name" content="cillianの个人站">
 <meta property="og:description" content="1.什么是action?">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/action1.png">
+<meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/action2.png">
 <meta property="article:published_time" content="2020-08-09T14:29:21.000Z">
-<meta property="article:modified_time" content="2020-08-09T15:50:25.053Z">
+<meta property="article:modified_time" content="2020-08-10T00:00:07.478Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="ros">
 <meta property="article:tag" content="动作">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qejqy1ctj.bkt.clouddn.com/action1.png">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
   
@@ -178,8 +181,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1.什么是action?</strong><br><a id="more"></a><br>　　action机制从原理上看的话，其实是<code>基于topic</code>实现的，相当于制定了一套由<code>目标话题，反馈话题，结果话题</code>组成的高级协议。action实现了一种类似于service的请求/响应通讯机制，区别在于action带有<code>反馈机制</code>，用来不断向客户端反馈任务的进度，并且还支持在任务<code>中途中止运行</code>。<br>　　操作起来就像这样子，客户端给服务端抛出一个目标，然后客户端就可以去干别的事情了，在任务执行期间，客户端会以消息的形式，<code>周期性</code>地接收到来自服务端的进度反馈，如果没有终止任务的话这个过程会一直延续到收到最终的结果。当然也可以随时终止当前的操作，开始一个全新的操作。</p>
-<p><strong>2.动作.action文件的书写格式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#part1: the goal, to be sent by the client</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">#part2: the result, to be sent by the server upon completion</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">#part3: the feedback, to be sent by server during execution</span><br></pre></td></tr></table></figure><br><strong>3. 自定义动作(action)时<code>package.xml</code>的修改</strong><br>　　除了<code>CMakeLists.txt</code>中的修改,还需要修改<code>package.xml</code>,在其中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;build_depend&gt;actionlib_msgs&lt;&#x2F;build_depend&gt;</span><br><span class="line">&lt;exec_depend&gt;actionlib_msgs&lt;&#x2F;exec_depend&gt;</span><br></pre></td></tr></table></figure></p>
+        <h1 id="1-什么是action"><a href="#1-什么是action" class="headerlink" title="1.什么是action?"></a><strong>1.什么是action?</strong></h1><a id="more"></a>
+<p>　　action机制从原理上看的话，其实是<code>基于topic</code>实现的，相当于制定了一套由<code>目标话题，反馈话题，结果话题</code>组成的高级协议。action实现了一种类似于service的请求/响应通讯机制，区别在于action带有<code>反馈机制</code>，用来不断向客户端反馈任务的进度，并且还支持在任务<code>中途中止运行</code>。<br>　　操作起来就像这样子，客户端给服务端抛出一个目标，然后客户端就可以去干别的事情了，在任务执行期间，客户端会以消息的形式，<code>周期性</code>地接收到来自服务端的进度反馈，如果没有终止任务的话这个过程会一直延续到收到最终的结果。当然也可以随时终止当前的操作，开始一个全新的操作。<br><img src="http://qejqy1ctj.bkt.clouddn.com/action1.png" alt="action1"><br><img src="http://qejqy1ctj.bkt.clouddn.com/action2.png" alt="action2"></p>
+<h1 id="2-action的定义"><a href="#2-action的定义" class="headerlink" title="2. action的定义"></a><strong>2. action的定义</strong></h1><p>想要创建一个action，首先需要在action定义文件中定义三个消息格式，分别是：<code>目标，结果，反馈。</code><br>action的定义文件后缀格式为<code>.action</code>。action的定义文件看起来和server的定位文件很相似。在编译过程中该文件也会被打包生成为一个消息类型。</p>
+<blockquote>
+<p>tip:<br>    在ROS功能包中：</p>
+<blockquote>
+<p>msg/ ：我们需要把自己定义的.msg文件放在这里<br>        srv/：我们需要把自己定义的.srv文件放在这里<br>        action/：我们需要把自己定义的.action文件放在这里</p>
+</blockquote>
+</blockquote>
+<p><strong>2.1.动作.action文件的书写格式</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#part1: the goal, to be sent by the client</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">#part2: the result, to be sent by the server upon completion</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">#part3: the feedback, to be sent by server during execution</span><br></pre></td></tr></table></figure><br><strong>2.2. 自定义动作(action)时<code>package.xml</code>的修改</strong><br>　　除了<code>CMakeLists.txt</code>中的修改,还需要修改<code>package.xml</code>,在其中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;build_depend&gt;actionlib_msgs&lt;&#x2F;build_depend&gt;</span><br><span class="line">&lt;exec_depend&gt;actionlib_msgs&lt;&#x2F;exec_depend&gt;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -503,11 +514,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">动作</a>
+                <a href="javascript:void(0)" class="js-tag color5">虚拟机通信IP设置</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">虚拟机通信IP设置</a>
+                <a href="javascript:void(0)" class="js-tag color3">动作</a>
               </li>
              
               <li class="article-tag-list-item">
