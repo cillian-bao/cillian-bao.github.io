@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE%E6%95%88%E6%9E%9CPNG.PNG">
 <meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/%E9%97%AE%E5%8F%B7%E8%A1%A8%E6%83%85%E5%8C%85.gif">
 <meta property="article:published_time" content="2020-08-03T08:58:18.000Z">
-<meta property="article:modified_time" content="2020-08-09T15:45:47.285Z">
+<meta property="article:modified_time" content="2020-08-15T05:46:03.272Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="hexo个人博客">
 <meta property="article:tag" content="yilia主题配置">
@@ -74,7 +74,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 10
+			总文章数 11
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -185,14 +185,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>1.博客左侧显示总文章数</strong><br><a id="more"></a><br>打开<code>themes/yilia/layout/_partial/left-col.ejs</code>文件<br>通过<code>ctrl+f</code>找到下面的片段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav class&#x3D;&quot;header-menu&quot;&gt;</span><br><span class="line">&lt;ul&gt;</span><br><span class="line">&lt;% for (var i in theme.menu)&#123; %&gt;</span><br><span class="line">&lt;li&gt;&lt;a href&#x3D;&quot;&lt;%- url_for(theme.menu[i]) %&gt;&quot;&gt;&lt;%&#x3D; i %&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">&lt;%&#125;%&gt;</span><br><span class="line">&lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure><br>后面添加:</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;</span><br><span class="line">总文章数 &lt;%&#x3D;site.posts.length%&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure></h2><p><strong>2.修改页面右下角的 <code>Hexo Theme Yilia by Litten</code></strong><br>在<code>blog/themes/yilia/layout/_partial</code>目录下找到<code>footer.ejs</code>文件 修改里面的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;footer-right&quot;&gt;</span><br><span class="line"> &lt;a href&#x3D;&quot;http:&#x2F;&#x2F;hexo.io&#x2F;&quot; target&#x3D;&quot;_blank&quot;&gt;Hexo&lt;&#x2F;a&gt;  Theme &lt;a   href&#x3D;&quot;https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia&quot; target&#x3D;&quot;_blank&quot;&gt;Yilia&lt;&#x2F;a&gt; by Litten</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure><br>像我是直接去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;hexo.io&#x2F;&quot; target&#x3D;&quot;_blank&quot;&gt;Hexo&lt;&#x2F;a&gt;  Theme &lt;a   href&#x3D;&quot;https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia&quot; target&#x3D;&quot;_blank&quot;&gt;Yilia&lt;&#x2F;a&gt; by Litten</span><br></pre></td></tr></table></figure><br>改成</p>
-<h2 id="迷惘的走，希望是向前"><a href="#迷惘的走，希望是向前" class="headerlink" title="迷惘的走，希望是向前"></a><code>迷惘的走，希望是向前</code></h2><p><strong>3.所有文章模块缺失最新解决方案</strong><br>在自己的博客目录下运行cmd,执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-generator-json-content --save</span><br></pre></td></tr></table></figure><br>然后在博客目录<code>_config.yml</code>(注意不是<code>yilia</code>下的<code>_config.yml</code>)文件最后添加代码:</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;nav&gt;</span><br><span class="line">总文章数 &lt;%&#x3D;site.posts.length%&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure></h2><p><strong>2.修改页面右下角的 <code>Hexo Theme Yilia by Litten</code></strong><br>在<code>blog/themes/yilia/layout/_partial</code>目录下找到<code>footer.ejs</code>文件 修改里面的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class&#x3D;&quot;footer-right&quot;&gt;</span><br><span class="line"> &lt;a href&#x3D;&quot;http:&#x2F;&#x2F;hexo.io&#x2F;&quot; target&#x3D;&quot;_blank&quot;&gt;Hexo&lt;&#x2F;a&gt;  Theme &lt;a   href&#x3D;&quot;https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia&quot; target&#x3D;&quot;_blank&quot;&gt;Yilia&lt;&#x2F;a&gt; by Litten</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure><br>像我是直接去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;hexo.io&#x2F;&quot; target&#x3D;&quot;_blank&quot;&gt;Hexo&lt;&#x2F;a&gt;  Theme &lt;a   href&#x3D;&quot;https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia&quot; target&#x3D;&quot;_blank&quot;&gt;Yilia&lt;&#x2F;a&gt; by Litten</span><br></pre></td></tr></table></figure><br>改成<br><code>迷惘的走，希望是向前</code></p>
+<hr>
+<p><strong>3.所有文章模块缺失最新解决方案</strong><br>在自己的博客目录下运行cmd,执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-generator-json-content --save</span><br></pre></td></tr></table></figure><br>然后在博客目录<code>_config.yml</code>(注意不是<code>yilia</code>下的<code>_config.yml</code>)文件最后添加代码:</p>
 <h2 id="-1"><a href="#-1" class="headerlink" title=""></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">  meta: false</span><br><span class="line">  pages: false</span><br><span class="line">  posts:</span><br><span class="line">    title: true</span><br><span class="line">    date: true</span><br><span class="line">    path: true</span><br><span class="line">    text: false</span><br><span class="line">    raw: false</span><br><span class="line">    content: false</span><br><span class="line">    slug: false</span><br><span class="line">    updated: false</span><br><span class="line">    comments: false</span><br><span class="line">    link: false</span><br><span class="line">    permalink: false</span><br><span class="line">    excerpt: false</span><br><span class="line">    categories: false</span><br><span class="line">    tags: true </span><br><span class="line"></span><br></pre></td></tr></table></figure></h2><p><strong>4.博客文章markdown中tags标签的书写</strong><br>首先通过hexo n “我的博客名”<br>然后会出现<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我的博客名</span><br><span class="line">date: 2020-08-02 19:51:54</span><br><span class="line">tags: </span><br><span class="line">---</span><br></pre></td></tr></table></figure><br>添加多个标签的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tags: [python,css,html]</span><br></pre></td></tr></table></figure><br>注意tags后面一定要加空格，适用于所有的属性，多个tags用<code>[]</code>括起来，中间用<code>,</code>隔开</p>
 <hr>
 <p><strong>5.设置网站ico</strong><br>去一个在线转换图标的网站制作ico图标<br>将图片放到blog/source/img文件夹下(<code>最好放在source,但其实只要保证相对路径正确即可</code>)<br>找到<code>blog\themes\yilia\layout\_partial\head.ejs</code>文件<br>设置为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.favicon)&#123; %&gt;</span><br><span class="line">    &lt;link rel&#x3D;&quot;icon&quot; href&#x3D;&quot;&#x2F;img&#x2F;favicon.ico&quot;&gt;</span><br><span class="line">  &lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure><br><code>注意favicon.ico换回自己的文件名</code></p>
 <hr>
-<p><strong>6.author,subtitle不显示的终极大招</strong><br>不知道为什么我的出现了author与subtitle不显示的问题<br>可能是hexo版本太高，我的是5.0的版本<br>直接进入<code>blog\themes\yilia\layout\_partial\left-col.ejs</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;hgroup&gt;</span><br><span class="line">  &lt;h1 class&#x3D;&quot;header-author&quot;&gt;&lt;a href&#x3D;&quot;&lt;%&#x3D;theme.root%&gt;&quot;&gt;&lt;%&#x3D;theme.author%&gt;&lt;&#x2F;a&gt;泽安的个人站&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;&#x2F;hgroup&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;header-subtitle&quot;&gt;&lt;%&#x3D;theme.subtitle%&gt;无问西东&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;nav class&#x3D;&quot;header-menu&quot;&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">  &lt;% for (var i in theme.menu)&#123; %&gt;</span><br><span class="line">    &lt;li&gt;&lt;a href&#x3D;&quot;&lt;%- url_for(theme.menu[i]) %&gt;&quot;&gt;&lt;%&#x3D; i %&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">      &lt;%&#125;%&gt;</span><br><span class="line">  &lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure><br>设置的效果如下<br><img src="http://qejqy1ctj.bkt.clouddn.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE%E6%95%88%E6%9E%9CPNG.PNG" alt="设置效果"><br><strong>7. 文章截断<code>&lt;!--more--&gt;</code></strong><br>　　很长一段时间,我的文章不能实现截断,我在想是不是因为我的人品差?<br><img src="http://qejqy1ctj.bkt.clouddn.com/%E9%97%AE%E5%8F%B7%E8%A1%A8%E6%83%85%E5%8C%85.gif" alt="问号"><br>后来发现<br><code>折叠不能出现在文章开头，否则就会被视为无效</code>,也就是说<code>&lt;!--more--&gt;</code>前面要有内容<br>**8. </p>
-
+<p><strong>6.author,subtitle不显示的终极大招</strong><br>不知道为什么我的出现了author与subtitle不显示的问题<br>可能是hexo版本太高，我的是5.0的版本<br>直接进入<code>blog\themes\yilia\layout\_partial\left-col.ejs</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;hgroup&gt;</span><br><span class="line">  &lt;h1 class&#x3D;&quot;header-author&quot;&gt;&lt;a href&#x3D;&quot;&lt;%&#x3D;theme.root%&gt;&quot;&gt;&lt;%&#x3D;theme.author%&gt;&lt;&#x2F;a&gt;泽安的个人站&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;&#x2F;hgroup&gt;</span><br><span class="line">&lt;p class&#x3D;&quot;header-subtitle&quot;&gt;&lt;%&#x3D;theme.subtitle%&gt;无问西东&lt;&#x2F;p&gt;</span><br><span class="line"></span><br><span class="line">&lt;nav class&#x3D;&quot;header-menu&quot;&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">  &lt;% for (var i in theme.menu)&#123; %&gt;</span><br><span class="line">    &lt;li&gt;&lt;a href&#x3D;&quot;&lt;%- url_for(theme.menu[i]) %&gt;&quot;&gt;&lt;%&#x3D; i %&gt;&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;</span><br><span class="line">      &lt;%&#125;%&gt;</span><br><span class="line">  &lt;&#x2F;ul&gt;</span><br><span class="line">&lt;&#x2F;nav&gt;</span><br></pre></td></tr></table></figure><br>设置的效果如下<br><img src="http://qejqy1ctj.bkt.clouddn.com/%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE%E6%95%88%E6%9E%9CPNG.PNG" alt="设置效果"></p>
+<hr>
+<p><strong>7. 文章截断<code>&lt;!--more--&gt;</code></strong><br>　　很长一段时间,我的文章不能实现截断,我在想是不是因为我的人品差?<br><img src="http://qejqy1ctj.bkt.clouddn.com/%E9%97%AE%E5%8F%B7%E8%A1%A8%E6%83%85%E5%8C%85.gif" alt="问号"><br>后来发现<br><code>折叠不能出现在文章开头，否则就会被视为无效</code>,也就是说<code>&lt;!--more--&gt;</code>前面要有内容</p>
+<hr>
+<p><strong>8. hexo中关于latex公式的渲染出错的问题</strong><br>　　hexo默认的渲染引擎就是对于正常的latex语法有问题，鬼知道什么原因，hexo默认的渲染引擎为hexo-renderer-marked，而marked默认是不支持mathjax公式输出</p>
+<script type="math/tex; mode=display">\frac{1}{ {(2\pi)}^\frac{D}{2} }</script>
       
 
       
@@ -491,6 +496,14 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">地址，指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">hexo个人博客</a>
               </li>
              
@@ -539,10 +552,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
               </li>
              
@@ -552,6 +561,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
             
             <div class="clearfix"></div>
