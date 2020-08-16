@@ -16,10 +16,12 @@
 <meta property="og:description" content="C语言基本语法：数组地址与结构体地址的函数调用记录">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-14T21:26:24.000Z">
-<meta property="article:modified_time" content="2020-08-14T21:52:19.901Z">
+<meta property="article:modified_time" content="2020-08-15T14:39:38.290Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
 <meta property="article:tag" content="地址，指针">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="结构体">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
@@ -68,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 11
+			总文章数 13
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -178,14 +180,64 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>C语言基本语法：数组地址与结构体地址的函数调用记录<br><a id="more"></a><br><strong>1. 一维数组的地址调用</strong><br>一位数组的函数调用有很多种写法，目前列举常用的写法<br>主要思想：传递首地址与数组大小</p>
+        <p>C语言基本语法：数组地址与结构体地址的函数调用记录<br><a id="more"></a><br><strong>1. 一维数组的地址调用</strong><br>在进行一维数组的地址调用之前.理顺一维数组与指针地址的关系</p>
+<p><font color=red>一些声明:</font></p>
+<ul>
+<li>一维数组的数组名代表数组的首地址,注意数组名与普通变量名的区别<br>&gt;<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line">p=a;</span><br></pre></td></tr></table></figure>
+&gt;<blockquote>
+<p>a是一个地址,&amp;a是错误的写法</p>
+</blockquote>
+</li>
+<li>通过指针引用一维数组需要注意的点<br>①数组指针变量向前或向p+i后移动一个位置和单纯的地址加1减1概念不同,因为数组有不同类型,各种类型的数组所占的字节长度是不同的<br>②指向数组的指针可以带下标,<code>p[i]</code>与<code>*(p+i)</code>都代表元素<code>a[i]</code></li>
+</ul>
+<p>数组元素a[i]及其地址的表示法<br>|序号|表示方法|元素|地址|说明<br>|—-|—-|—-|—-|—-|—-|<br>| 1 |下标法|a[i]|&amp;a[i]|下标法<br>| 2 |指针下标法|p[i]|(p+i)|下标法<br>| 3 |地址法|<em>(a+i)|(a+i)|指针法<br>| 4 |指针法|</em>(p+i)|(p+i)|指针法</p>
+<p><font color=red size=5>注意:a[i]与*(a+i)无条件等价</font><br>一位数组的函数调用有很多种写法，目前列举常用的写法<br>主要思想：传递首地址与数组大小,注意其中第二种写法,不要认为是传递数值<code>a[10]</code></p>
 <blockquote>
 <ul>
-<li>指针形式：int max(int *a,int n);</li>
-<li>数组形式：int max(int a[10],int n)</li>
-<li>无尺寸数组形式：int max(int a[],int n)</li>
+<li><p>指针形式：int max(int *a,int n);</p>
+</li>
+<li><p>数组形式：int max(int a[10],int n)</p>
+</li>
+<li><p>无尺寸数组形式：int max(int a[],int n)</p>
+</li>
 </ul>
 </blockquote>
+<p>举个例子</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">author:cillian-bao</span></span><br><span class="line"><span class="comment">date:2020年8月15日</span></span><br><span class="line"><span class="comment">description:一维数组的地址调用(例子:排序)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 20</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> a[<span class="number">10</span>],<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[N];</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(a,n);</span><br><span class="line">    output(a,n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> a[<span class="number">10</span>],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i,j,maxloc,temp;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        maxloc=i;</span><br><span class="line">        <span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[maxloc]&lt;a[j])</span><br><span class="line">            maxloc=j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(maxloc!=i)</span><br><span class="line">        &#123; </span><br><span class="line">            temp=a[maxloc];</span><br><span class="line">            a[maxloc]=a[i];</span><br><span class="line">            a[i]=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></h2><p><strong>2. 二维数组的地址调用</strong><br>　　对于二维数组,我在c语言的学习过程中,由于一些知识点经常用不上,所以常常忘记某些知识点,二维数数组算一个.</p>
+<ul>
+<li>二维数组知识点巩固:<br>　　①二维数组的赋值方法一共有两种,因为在二维数组内部元素是按行组织的,先行后列的s形<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> s[<span class="number">3</span>][<span class="number">3</span>]=&#123;&#123;<span class="number">95</span>,<span class="number">68</span>,<span class="number">78</span>&#125;,&#123;<span class="number">65</span>,<span class="number">77</span>,<span class="number">88</span>&#125;.&#123;<span class="number">94</span>,<span class="number">82</span>,<span class="number">73</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">int</span> s[<span class="number">3</span>][<span class="number">4</span>]=&#123;<span class="number">95</span>,<span class="number">68</span>,<span class="number">78</span>,<span class="number">65</span>,<span class="number">77</span>,<span class="number">88</span>,<span class="number">94</span>,<span class="number">82</span>,<span class="number">73</span>&#125;;</span><br></pre></td></tr></table></figure>
+推荐使用第一种方法,可以在数据很多的情况下,便于检查<br>对于二维数组赋值缺少的情况下,自动赋值为0(与一维数组相同)<br>　　②二维数组与指针<br>C语言允许将二维数组分解成多个一维数组处理,所以对于二维数组与指针的关系基本上可以分为两种:</li>
+<li>用指针变量指向二维数组的某个元素</li>
+<li>用指针变量指向二维数组的某一行<br>注意上面两种一般可以互换使用<br>指针变量指向二维数组某元素</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>语法</th>
+<th>样例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指向任意元素</td>
+<td>指针变量=&amp;数组名[下标1][下标2]或指针变量=<code>*(a+i\*N)+j</code></td>
+<td>p=&amp;a[1][2]或 *(a+1)+2</td>
+<td>p指向行下标为1,列下标为2,即数值7所在的位置</td>
+</tr>
+<tr>
+<td>指向首元素</td>
+<td>指针变量=&amp;a[0][0]或者*a</td>
+<td>p=&amp;a[0][0]或 *a</td>
+<td>p指向首元素,即数值1所在的位置</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<p>用指针变量指向二维数组的某一行<br>对于一个整形二维数组<code>int a[3][4]</code>.该数组可以看成由3个元素组成的一个一维数组,这3个元素本身也是一维数组,数组名分别为<code>a[0],a[1],a[2]</code>,每一个一维数组含有四个元素,例如<code>a[0]</code>数组,含有<code>a[0][0],a[0][1],a[0][2],a[0][3]</code>.一维数组名代表数组的首地址,因此<code>a,a+1,a+2</code>分别是<code>a[0],a[1],a[2]</code>的地址,而<code>a[0],a[1],a[2]</code>又分别是<code>a[0][0],a[1][0,a[2][0]</code>的地址.<br>所以a[i][j]的地址可以表示为a[i]+j,也可以表示为*(a+i)+j</p>
 
       
 
@@ -235,6 +287,14 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">地址，指针</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">结构体</a>
         		</li>
       		
 		</ul>
@@ -318,6 +378,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/15/C-%E5%AD%97%E7%AC%A6%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C:字符字符串基础知识
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/09/vscode%E7%BC%96%E8%BE%91%E5%99%A8%E6%8A%80%E5%B7%A7/" id="article-nav-older" class="article-nav-link-wrap">
@@ -472,6 +541,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">结构体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">hexo个人博客</a>
               </li>
              
@@ -492,15 +573,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">markdown语法</a>
+                <a href="javascript:void(0)" class="js-tag color1">python基础语法</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">python图片读取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">python基础语法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,6 +601,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
               </li>
              
@@ -533,10 +614,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
             
             <div class="clearfix"></div>
