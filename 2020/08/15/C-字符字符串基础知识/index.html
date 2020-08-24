@@ -16,7 +16,7 @@
 <meta property="og:description" content="C语言中字符数组与字符串的记录">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-15T14:14:36.000Z">
-<meta property="article:modified_time" content="2020-08-16T08:12:09.043Z">
+<meta property="article:modified_time" content="2020-08-24T01:37:35.721Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
 <meta property="article:tag" content="字符，字符串">
@@ -68,7 +68,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 13
+			总文章数 18
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -178,7 +178,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>C语言中字符数组与字符串的记录<br><a id="more"></a><br>**1.</p>
+        <p>C语言中字符数组与字符串的记录<br><a id="more"></a></p>
+<p><font color=red size=4>注意：c语言里面没有string类型，虽然他有string.h这个头文件，23333</font><br><strong>1. 字符数组的赋值方式</strong><br>　　1.1 逐个字符赋值给数组中的各元素<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">5</span>]=&#123;<span class="string">&#x27;F&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;n&#x27;</span>,<span class="string">&#x27;k&#x27;</span>&#125;;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>字符常量外面的单引号只是起到界定符的作用，在储存与输出时都不会显示,在输入设备上输入字符时，不需要加上单引号</p>
+</blockquote>
+<p>逐个赋值时需要注意的问题：</p>
+<blockquote>
+<p>若大括号内提供的初值个数小于数组长度，则将这些字符依次赋值给数组中前面的那些元素，其他的字符自动赋为空字符’\0’(空字符在字符数组中有特殊含义，可以充当字符串结束标记)<br>在具体的代码定义中可以省略数组长度，数组会自动根据初值字符的个数来决定数组大小</p>
+</blockquote>
+<p>　　1.2 用字符串常量初始化<br>逐个字符赋值的方式，基本不用，太繁琐。<br>C语言本身没有字符串常量类型，字符串处理依赖于字符数组。<br>用到了字符串常量，系统一定会在后面自动加’\0’,字符串需要用<code>双引号</code>界定<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">6</span>]=&#123;<span class="string">&quot;Frank&quot;</span>&#125;</span><br></pre></td></tr></table></figure><br>空字符是我们进行各种处理时的结束标志<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;str[i]!=<span class="string">&#x27;\0&#x27;</span>;i++)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>2. 字符数组的输入输出</strong><br>字符数组的输入输出一共有3种方式<br>2.1 使用格式控制符”%c”,逐个字符输入输出<br>2.2 使用格式控制符”%s”,实现整个字符输入输出<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>,str);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,str);</span><br></pre></td></tr></table></figure><br>注意在地址表部分应该是字符数组名，不要再加上取地址符号。因为在C语言中数组名代表该数组的起始地址</p>
+<p><font color=red size=4>致命缺点:</font>使用”%s”格式输入字符串时是以空格、换行作为间隔符的，所以对于有空格的字符串，会把空格转换为<code>&#39;\0&#39;</code>会被截断<br>2.3 使用gets()函数与puts()函数进行输入输出<br><code>gets(str)</code>函数输入的字符串以换行符’\n’为结束标记，赋值时自动将’\n’转换为<code>&#39;\0&#39;</code></p>
+<p><font color=red>gets函数在输入字符串特别长时,会出现溢出,且不可避免,所以后面会使用fgets</font><br><code>puts(str)</code>函数在输出时将字符串结束标记’\0’转换成’\n’,即输出完成后自动换行</p>
+<p><strong>3. 字符串处理函数</strong></p>
+<ul>
+<li>字符串长度测试函数<code>strlen(字符数组)</code><br>strlen(str)的返回值是字符串的实际长度，其中不包括结束符’\0’<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>]=<span class="string">&quot;hello boy&quot;</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,<span class="built_in">strlen</span>(str));</span><br></pre></td></tr></table></figure>
+输出的字符串长度是9<br><code>sizeof</code>单目操作符与<code>strlen</code>函数在用于变量时的区别：<br><font color=blue><code>sizeof</code>可以用类型、函数做参数，<code>strlen</code>只能用char*做参数，且必须是以’’\0’’结尾的。</font><blockquote>
+<p>sizeof的使用形式：sizeof(var_name)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">f</span><span class="params">()</span></span>;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,<span class="keyword">sizeof</span>(f))</span><br></pre></td></tr></table></figure>
+<p>输出的结果是sizeof(int),即4。因为f的返回类型为int,所以相当于求sizeof(int)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str[<span class="number">20</span>]=<span class="string">&quot;0123456789&quot;</span>;</span><br><span class="line"><span class="keyword">int</span> a=<span class="built_in">strlen</span>(str); <span class="comment">//a=10;</span></span><br><span class="line"><span class="keyword">int</span> b=<span class="keyword">sizeof</span>(str); <span class="comment">//而b=20;</span></span><br></pre></td></tr></table></figure></blockquote>
+</li>
+<li>字符串连接函数<code>strcat(字符数组1,字符数组2)</code><br>字符数组1的长度必须足够长以容纳字符数组1与字符数组2的加和</li>
+<li>字符串复制函数<code>strcpy(字符数组1,字符数组2)</code><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> str1[<span class="number">20</span>],str2[<span class="number">10</span>]=<span class="string">&quot;Bye Bye&quot;</span></span><br><span class="line">str1=<span class="string">&quot;Bye Bye&quot;</span>;<span class="comment">//错误</span></span><br><span class="line">str1=str2;<span class="comment">//错误</span></span><br><span class="line"><span class="keyword">char</span> str1[<span class="number">20</span>]=<span class="string">&quot;Bye Bye&quot;</span>;<span class="comment">//正确</span></span><br><span class="line"><span class="built_in">strcpy</span>(str1,str2);</span><br></pre></td></tr></table></figure></li>
+<li><p><font color=red>字符串复制函数的拓展</font><br><code>strcpy_s</code>:char <em> strncpy(char </em> str2, int size,, char <em> str1);<br><code>strncpy</code>:char </em> strncpy(char <em> str2, char </em> str1, int size);</p>
+</li>
+<li><p>字符串比较函数<code>strcmp(字符数组1,字符数组2)</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(str1==str2) <span class="built_in">printf</span>(<span class="string">&quot;Equal&quot;</span>);<span class="comment">//错误</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">strcmp</span>(str1,str2)==<span class="number">0</span>) <span class="built_in">printf</span>(<span class="string">&quot;Equal&quot;</span>);<span class="comment">//正确</span></span><br></pre></td></tr></table></figure></li>
+<li><code>extern char *strstr(char *str1,const char *str2)</code><br>参数:<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>str1</code>:被查找目标<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>str2</code>:要查找对象<br>&nbsp;&nbsp;&nbsp;&nbsp;<code>返回值</code>:若str2是str1的子串，则返回str2在str1的首次出现的地址；如果str2不是str1的子串，则返回NULL<br>代码示例:<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> str[<span class="number">20</span>]=&#123;<span class="string">&quot;1234xyz&quot;</span>&#125;;</span><br><span class="line">  <span class="keyword">char</span> *str1=<span class="built_in">strstr</span>(str,<span class="string">&quot;34&quot;</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,str1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><code>char *strchr(const char *s,char c)</code><br>与上面的<code>strstr()</code>有稍许不同的地方就是一个是字符串,一个是字符<br>返回值:查找字符串s中首次出现字符c的位置,返回首次出现c的位置的指针，如果s中不存在c则返回NULL。<br><strong>4. 字符数组处理与字符指针处理的不同</strong></li>
+<li>占用空间大小不同。字符数组所占用的空间大小与数组的长度有关，而字符指针只占用4字节，用以存放字符串的首地址</li>
+<li>赋值方式不同。字符指针本身是一个变量，而字符数组名所表示的地址为一常数,只能对字符数组的元素逐一赋值。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符数组的赋值方式</span></span><br><span class="line"><span class="keyword">char</span> st[<span class="number">20</span>]=<span class="string">&quot;C language&quot;</span> <span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> st[<span class="number">20</span>];</span><br><span class="line">st=<span class="string">&quot;C language&quot;</span>;<span class="comment">//错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符指针的赋值方式</span></span><br><span class="line"><span class="keyword">char</span> *ps=<span class="string">&quot;C language&quot;</span>;<span class="comment">//正确</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> *ps;</span><br><span class="line">ps=<span class="string">&quot;C language&quot;</span><span class="comment">//正确</span></span><br></pre></td></tr></table></figure>
+通过一个例子体会地址常量不能赋值带来的麻烦<br>将字符串a复制到字符串b(不使用strcpy函数)<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> *p=<span class="string">&quot;C language&quot;</span>;</span><br><span class="line">  <span class="keyword">char</span> *p1,*p2;</span><br><span class="line">  <span class="keyword">char</span> b[<span class="number">20</span>];</span><br><span class="line">  p1=p;</span><br><span class="line">  p2=b;</span><br><span class="line">  <span class="keyword">for</span>(;*p1!=<span class="string">&#x27;\0&#x27;</span>;p1++,p2++)</span><br><span class="line">  &#123;</span><br><span class="line">    *p2=*p1;</span><br><span class="line">  &#125;</span><br><span class="line">  *p2=<span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">  p2=b;<span class="comment">//将指针重新指到行前</span></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;字符串b：&quot;</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,p2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<strong>5. 关于C语言没有String类型的分析</strong><br>　　c语言是静态弱类型，意味着类型在编译时就能确定下来。普通的简单类型有<code>char,int,float</code>这样的，复合类型有<code>struct</code>,<code>union</code>,以及<code>指针</code>类型。这些类型是在编译时就可以明确规定存储空间大小，<code>char</code>:1个字节，<code>int</code>:4个字节,<code>double</code>:8个字节，指针类型一般为4个字节。<br>　　所谓的String类型，它的大小不能在编译的时候确定下来，因为你将存储 string 的长度不是固定的，可大可小</li>
+</ul>
 
       
 
@@ -470,10 +505,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">地址，指针</a>
               </li>
              
@@ -483,6 +514,42 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">结构体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间获取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">编译器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gcc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">cl.exe</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -538,6 +605,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
               </li>
              
@@ -547,10 +618,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
             
             <div class="clearfix"></div>

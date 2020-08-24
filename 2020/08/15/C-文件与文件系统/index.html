@@ -8,17 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C:文件与文件系统 | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人记录分享网站">
+  <meta name="description" content="c语言中文件操作的记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C:文件与文件系统">
 <meta property="og:url" content="http://yoursite.com/2020/08/15/C-%E6%96%87%E4%BB%B6%E4%B8%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="个人记录分享网站">
+<meta property="og:description" content="c语言中文件操作的记录">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/ftell%28fp%29.PNG">
 <meta property="article:published_time" content="2020-08-15T14:15:07.000Z">
-<meta property="article:modified_time" content="2020-08-15T14:15:07.726Z">
+<meta property="article:modified_time" content="2020-08-18T02:14:23.295Z">
 <meta property="article:author" content="泽安的个人站">
+<meta property="article:tag" content="c">
+<meta property="article:tag" content="文件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qejqy1ctj.bkt.clouddn.com/ftell%28fp%29.PNG">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
   
@@ -66,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 13
+			总文章数 18
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -176,7 +180,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>c语言中文件操作的记录<br><a id="more"></a><br><strong>1. 文本文件与二进制文件</strong><br>　　C语言本身没有没有直接操作文件的输入输出语句，对文件的读写操作都是通过系统提供的I/O库函数来实现的<br><strong>3. 文件的顺序读写</strong><br>　　 关键是要理解一旦通过语句操作文件，开辟缓冲区，缓冲区就一直在(除非通过fclose手动关闭)，并且会随着后续的操作函数，自动调节指针的位置。<code>程序里面不能出现多次重新操作文件的语句</code>，不仅没有必要，而且会破坏指针的位置，也有可能对前面的文件信息产生影响.</p>
+<p>举一个例子：<br>将文本文件D:\test.txt中的信息复制到另一个文件D:\example.txt中。</p>
+<p><font color=red size=4>错误程序例程</font><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fpin,*fpout;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">if</span>((fpin=fopen(<span class="string">&quot;D:/test.txt&quot;</span>,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;can not read the test file&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>((ch=fgetc(fpin))!=EOF)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>((fpout==fopen(<span class="string">&quot;D:/example.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;can not read the example file&quot;</span>);</span><br><span class="line">                <span class="built_in">exit</span>(<span class="number">0</span>)</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                fputc(ch,fpout);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(fpin);</span><br><span class="line">    fclose(fpout);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><font color=blue size=4>正确程序</font><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fpin,*fpout;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="keyword">if</span>((fpin=fopen(<span class="string">&quot;D:/test.txt&quot;</span>,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;can not read the test file&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>((fpout==fopen(<span class="string">&quot;D:/example.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;can not read the example file&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>((ch=fgetc(fpin))!=EOF)</span><br><span class="line">    &#123;</span><br><span class="line">        fputc(ch,fpout);</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(fpin);</span><br><span class="line">    fclose(fpout);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>必须要注意的点：文件操作涉及到子函数的问题时，有时比较麻烦，看一个例子:<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">author:cillian-bao</span></span><br><span class="line"><span class="comment">date:2020年8月18日</span></span><br><span class="line"><span class="comment">description:</span></span><br><span class="line"><span class="comment">查看fclose后文件指针的位置</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writefile</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">readfile</span><span class="params">(<span class="keyword">int</span> *,<span class="keyword">int</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[<span class="number">100000</span>];</span><br><span class="line">    <span class="keyword">int</span> N;</span><br><span class="line">    <span class="keyword">int</span> k;</span><br><span class="line">    <span class="keyword">int</span> fp_now;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入你想测试的数据容量:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;N);</span><br><span class="line">    k=N/<span class="number">2</span>;</span><br><span class="line">    writefile();</span><br><span class="line">    fp_now=readfile(a,k);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;指针的现在位置%d&quot;</span>,fp_now);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">writefile</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>((fp=fopen(<span class="string">&quot;E:\\C\\data_structure\\test.txt&quot;</span>,<span class="string">&quot;w&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;不能正确打开test文件&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">100000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fprintf</span>(fp,<span class="string">&quot;%d &quot;</span>,i);</span><br><span class="line">    &#125;</span><br><span class="line">    fclose(fp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">readfile</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">if</span>((fp=fopen(<span class="string">&quot;E:\\C\\data_structure\\test.txt&quot;</span>,<span class="string">&quot;r&quot;</span>))==<span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;读取文件出现错误&quot;</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">fscanf</span>(fp,<span class="string">&quot;%d &quot;</span>,&amp;a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(fclose(fp)==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;关闭成功&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ftell(fp);</span><br><span class="line">    <span class="comment">//为了保证后续指针的连续性读取</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在fclose(fp)成功执行后，返回的ftell(fp)的值是-1，表示EOF<br><img src="http://qejqy1ctj.bkt.clouddn.com/ftell%28fp%29.PNG" alt="指针位置"><br>如果在fclose(fp)之前进行return</p>
+
       
 
       
@@ -215,7 +228,37 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文件</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/c//" class="article-tag-list-link color2">c</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/c/文件操作//" class="article-tag-list-link color5">文件操作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -278,6 +321,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/20/C-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%BF%90%E7%AE%97%E7%AC%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          C-类型转换与运算符
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/15/C-%E5%AD%97%E7%AC%A6%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
@@ -428,10 +480,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">地址，指针</a>
               </li>
              
@@ -441,6 +489,42 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">结构体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间获取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">运算符</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">编译器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gcc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">cl.exe</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,6 +580,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
               </li>
              
@@ -505,10 +593,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">vscode</a>
               </li>
             
             <div class="clearfix"></div>
