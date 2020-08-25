@@ -6,14 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>post | cillianの个人站</title>
+  <title>chapter1收获 | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于&lt;&gt;这本书第一章知识的记录与感悟">
+  <meta name="description" content="关于C和指针这本书第一章知识的记录与感悟">
 <meta property="og:type" content="article">
-<meta property="og:title" content="post">
+<meta property="og:title" content="chapter1收获">
 <meta property="og:url" content="http://yoursite.com/2020/08/23/C%E5%92%8C%E6%8C%87%E9%92%88/chapter1%E6%94%B6%E8%8E%B7/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="关于&lt;&gt;这本书第一章知识的记录与感悟">
+<meta property="og:description" content="关于C和指针这本书第一章知识的记录与感悟">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/%E5%A4%B4%E6%96%87%E4%BB%B6.PNG">
 <meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/%E5%A4%B4%E6%96%87%E4%BB%B61.PNG">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/cilllianscanf.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/cillian1.jpg">
 <meta property="article:published_time" content="2020-08-23T11:45:42.000Z">
-<meta property="article:modified_time" content="2020-08-24T01:35:13.309Z">
+<meta property="article:modified_time" content="2020-08-24T11:45:31.776Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
 <meta name="twitter:card" content="summary">
@@ -74,7 +74,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 18
+			总文章数 20
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -171,7 +171,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      post
+      chapter1收获
     </h1>
   
 
@@ -184,10 +184,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>关于&lt;<C和指针>&gt;这本书第一章知识的记录与感悟<br><a id="more"></a><br><strong>1. stdlib.h定义了EXIT_SUCCESS与EXIT_FAILURE</strong><br>在stdlib.h头文件中关于这两个常量符号的定义<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXIT_SUCCESS 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXIT_FAILURE 1</span></span><br></pre></td></tr></table></figure><br>在程序中执行exit(EXIT_FAILURE),程序会立即终止退出.</p>
+        <p>关于<code>C和指针</code>这本书第一章知识的记录与感悟<br><a id="more"></a><br><strong>1. stdlib.h定义了EXIT_SUCCESS与EXIT_FAILURE</strong><br>在stdlib.h头文件中关于这两个常量符号的定义<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXIT_SUCCESS 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXIT_FAILURE 1</span></span><br></pre></td></tr></table></figure><br>在程序中执行exit(EXIT_FAILURE),程序会立即终止退出.</p>
 <p><strong>2. 简化代码的方法</strong><br>简化代码其实是一个噱头,重要的是避免维护性的问题</p>
 <ul>
-<li>如果我们的C程序会包含很多的<code>头文件</code>或<code>源文件</code>,可以在一个单独的文件(可以是.h或者.c文件)中编写这些声明,然后用include指令把这个文件包含到需要使用这些声明的源代码中<br><img src="http://qejqy1ctj.bkt.clouddn.com/%E5%A4%B4%E6%96%87%E4%BB%B6.PNG" alt="头文件"><br><img src="http://qejqy1ctj.bkt.clouddn.com/%E5%A4%B4%E6%96%87%E4%BB%B61.PNG" alt="头文件1"></li>
+<li>如果我们的C程序会包含很多的<code>头文件</code>或<code>源文件</code>,可以在一个单独的文件(可以是.h或者.c文件)中编写这些声明,然后用include指令把这个文件包含到需要使用这些声明的源代码中<br><font color=blue>#include后面一般有两种形式</font><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot; &quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;&gt;</span></span></span><br></pre></td></tr></table></figure>
+使用<code>尖括号</code>表示在包含文件目录中去查找(包含目录是由用户在设置环境时设置的)，而不在源文件目录去查找.使用<code>双引号</code>则表示首先在当前的源文件目录中查找，若未找到才到包含目录中去查找。用户编程时可根据自己文件所在的目录来选择某一种命令形式<br><img src="http://qejqy1ctj.bkt.clouddn.com/%E5%A4%B4%E6%96%87%E4%BB%B6.PNG" alt="头文件"></li>
+</ul>
+<p><img src="http://qejqy1ctj.bkt.clouddn.com/%E5%A4%B4%E6%96%87%E4%BB%B61.PNG" alt="头文件1"></p>
+<ul>
 <li>对于c语言中的函数声明也可以放在头文件中,避免多个文件同时调用而带来的问题</li>
 <li>C语言可以在while中进行赋值,避免代码冗余.<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/cillianwhile1.jpg"/></li>
 </ul>
@@ -208,7 +212,8 @@
 <li>0,表示用户输入不匹配,无法输入正确的值,输入<code>&quot;,3,4&quot;</code></li>
 <li>EOF,这是stdio.h头文件中定义的常量,值为-1,表示输入流结束.windows下,输入<code>CTR</code>L+<code>Z</code>(会看到^Z),然后再回车,就表示输入结束.</li>
 </ul>
-<p>scanf中的格式字符串中的空格在输入时也需要考虑,有了空格,在实际输入的时候,两个变量之间的<code>空格,换行,tab键</code>,都会被忽略.<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/cilllianscanf.jpg"/><br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/cillian1.jpg"/></p>
+<p>scanf中的格式字符串中的空格在输入时也需要考虑,有了空格,在实际输入的时候,两个变量之间的<code>空格,换行,tab键</code>,都会被忽略.<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/cilllianscanf.jpg"/></p>
+<p><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/cillian1.jpg"/></p>
 <p><strong>7. 声明的类型与接受的数据类型的一个不同</strong><br>第一章中举出了一个例子:EOF是一个整型值,它的位数比字符类型要多,我们定义接受这个值的变量时,要定义为整型.<br>字符类型本质上就是一个小整型</p>
 <p><strong>8. for循环中三个表达式执行的先后顺序</strong><br>for(初始部分,测试部分,调整部分)</p>
 <ul>
@@ -344,6 +349,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/24/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/%E5%BB%BA%E7%AB%8B%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          post
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/22/C-%E4%B8%8D%E4%B8%80%E6%A0%B7%E7%9A%84%E9%A2%84%E5%A4%84%E7%90%86%E6%8C%87%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
@@ -607,6 +621,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
             
             <div class="clearfix"></div>
