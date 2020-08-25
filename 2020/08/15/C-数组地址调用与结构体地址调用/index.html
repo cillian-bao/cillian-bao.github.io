@@ -17,10 +17,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://qejqy1ctj.bkt.clouddn.com/%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84.PNG">
 <meta property="article:published_time" content="2020-08-14T21:26:24.000Z">
-<meta property="article:modified_time" content="2020-08-25T13:27:55.669Z">
+<meta property="article:modified_time" content="2020-08-25T13:31:54.284Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
-<meta property="article:tag" content="地址，指针">
+<meta property="article:tag" content="地址">
+<meta property="article:tag" content="指针">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="结构体">
 <meta name="twitter:card" content="summary">
@@ -284,7 +285,8 @@
 </table>
 </div>
 <hr>
-<p>用指针变量指向二维数组的某一行<br>　　对于一个整形二维数组<code>int a[3][4]</code>.该数组可以看成由3个元素组成的一个一维数组,这3个元素本身也是一维数组,数组名分别为<code>a[0],a[1],a[2]</code>,每一个一维数组含有四个元素,例如<code>a[0]</code>数组,含有<code>a[0][0],a[0][1],a[0][2],a[0][3]</code>.一维数组名代表数组的首地址,因此<code>a,a+1,a+2</code>分别是<code>a[0],a[1],a[2]</code>的地址,而<code>a[0],a[1],a[2]</code>又分别是<code>a[0][0],a[1][0,a[2][0]</code>的地址.<br>所以a[i][j]的地址可以表示为a[i]+j,也可以表示为<em>(a+i)+j<br>看一个例子<br>&lt;!—hexoPostRenderEscape:<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/</em>&lt;/span&gt;&lt;/span&gt;<br><span class="line"><span class="comment">author:cillian-bao</span>&lt;/span&gt;<br><span class="line"><span class="comment">date:2020年8月15日</span>&lt;/span&gt;<br><span class="line"><span class="comment">description:列指针求二维元素的最小值及其下标</span>&lt;/span&gt;<br><span class="line"><span class="comment">*/</span>&lt;/span&gt;<br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span>&lt;/span&gt;&lt;/span&gt;<br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 3&lt;/span&gt;&lt;/span&gt;<br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 4&lt;/span&gt;&lt;/span&gt;<br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>&lt;/span&gt;&lt;/span&gt;<br><span class="line"><span class="function"></span>&#123;&lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> a[M][N];&lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> <em>p;&lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> i,j; &lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> m=<span class="number">3</span>;&lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> n=<span class="number">4</span>;&lt;/span&gt;<br><span class="line">    p=</em>a;&lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> temp;&lt;/span&gt;<br><span class="line">    <span class="keyword">int</span> row,col;&lt;/span&gt;<br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)&lt;/span&gt;<br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)&lt;/span&gt;<br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,(p+i<em><span class="number">4</span>+j));&lt;/span&gt;<br><span class="line">    &#125;</span><br><span class="line">    p=</em>a;&lt;/span&gt;<br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;你输入的二维数组是:\n&quot;</span>);&lt;/span&gt;<br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)&lt;/span&gt;<br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)&lt;/span&gt;<br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%4d&quot;</span>,<em>(p+i</em><span class="number">4</span>+j));&lt;/span&gt;<br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);&lt;/span&gt;<br><span class="line">    &#125;</span><br><span class="line">    row=<span class="number">0</span>,col=<span class="number">0</span>;&lt;/span&gt;<br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)&lt;/span&gt;<br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)&lt;/span&gt;<br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[row][col]&gt;a[i][j])&lt;/span&gt;<br><span class="line">            &#123;</span><br><span class="line">                row=i;</span><br><span class="line">                col=j;</span><br><span class="line">                temp=a[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;row:%d,col:%d value:%d&quot;</span>,row,col,temp);&lt;/span&gt;<br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; &lt;/span&gt;<br><span class="line">&#125;</span><br>&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape—&gt;</p>
+<p>用指针变量指向二维数组的某一行<br>　　对于一个整形二维数组<code>int a[3][4]</code>.该数组可以看成由3个元素组成的一个一维数组,这3个元素本身也是一维数组,数组名分别为<code>a[0],a[1],a[2]</code>,每一个一维数组含有四个元素,例如<code>a[0]</code>数组,含有<code>a[0][0],a[0][1],a[0][2],a[0][3]</code>.一维数组名代表数组的首地址,因此<code>a,a+1,a+2</code>分别是<code>a[0],a[1],a[2]</code>的地址,而<code>a[0],a[1],a[2]</code>又分别是<code>a[0][0],a[1][0,a[2][0]</code>的地址.<br>所以a[i][j]的地址可以表示为a[i]+j,也可以表示为*(a+i)+j<br>看一个例子</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">author:cillian-bao</span></span><br><span class="line"><span class="comment">date:2020年8月15日</span></span><br><span class="line"><span class="comment">description:列指针求二维元素的最小值及其下标</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 3</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 4</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a[M][N];</span><br><span class="line">    <span class="keyword">int</span> *p;</span><br><span class="line">    <span class="keyword">int</span> i,j; </span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">3</span>;</span><br><span class="line">    <span class="keyword">int</span> n=<span class="number">4</span>;</span><br><span class="line">    p=*a;</span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="keyword">int</span> row,col;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,(p+i*<span class="number">4</span>+j));</span><br><span class="line">    &#125;</span><br><span class="line">    p=*a;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;你输入的二维数组是:\n&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%4d&quot;</span>,*(p+i*<span class="number">4</span>+j));</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    row=<span class="number">0</span>,col=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(a[row][col]&gt;a[i][j])</span><br><span class="line">            &#123;</span><br><span class="line">                row=i;</span><br><span class="line">                col=j;</span><br><span class="line">                temp=a[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;row:%d,col:%d value:%d&quot;</span>,row,col,temp);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Warning:上面的例子一定要注意地址的循环,对于任意一个a[i][j],它的地址是p+i*N+j,我第一次写代码时写成了p+i+j，结果连读入的数据都不能够一一对应<br>错误代码</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,(p+i*<span class="number">4</span>+j));</span><br><span class="line">&#125;</span><br><span class="line">p=*a;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;你输入的二维数组是:\n&quot;</span>);</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;m;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%4d&quot;</span>,*(p+i+j));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面真实的数据地址对应为:</p>
@@ -369,7 +371,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">地址，指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">地址</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">指针</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -624,7 +630,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">地址，指针</a>
+                <a href="javascript:void(0)" class="js-tag color3">地址</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,23 +646,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">时间获取</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">时间处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">运算符</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -665,6 +667,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">cl.exe</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间获取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -712,18 +722,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">矩阵概念的背景</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">话题</a>
               </li>
              
@@ -733,6 +731,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">坐标变换</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">矩阵概念的背景</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">计算机图形学</a>
               </li>
              
               <li class="article-tag-list-item">
