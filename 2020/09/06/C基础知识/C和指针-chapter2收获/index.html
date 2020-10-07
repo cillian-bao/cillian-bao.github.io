@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B.PNG">
 <meta property="article:published_time" content="2020-09-06T12:36:31.000Z">
-<meta property="article:modified_time" content="2020-09-08T07:23:29.160Z">
+<meta property="article:modified_time" content="2020-09-16T12:25:00.580Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 28
+			总文章数 34
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -187,44 +187,14 @@
 <li>%u:十进制无符号数</li>
 <li>%e:指数形式的浮点数</li>
 </ul>
-<p><strong>2. 三字母词(trigraph sequence)</strong><br>在ANSI标准中，定义了“三字母词”，或者成为“三联符序列”，英文为”trigraph sequences”。主要就是几个字符的序列合起来表示另一个字符，使得C环境在某些字符缺失的字符集上仍然可以实现。<br>但是，有的编译器因为C版本的原因是不响应三字母词的<br>如果需要三字母的响应，需要在编译时指定C版本(C99是响应的)</p>
-<p>9个三字母词</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>??(&nbsp;&nbsp;&nbsp;&nbsp;<code>[</code></td>
-<td>??&lt;&nbsp;&nbsp;&nbsp;&nbsp;<code>&#123;</code></td>
-<td>??=&nbsp;&nbsp;&nbsp;&nbsp;<code>#</code></td>
-</tr>
-<tr>
-<td>??)&nbsp;&nbsp;&nbsp;&nbsp;<code>]</code></td>
-<td>??&gt;&nbsp;&nbsp;&nbsp;&nbsp;<code>&#125;</code></td>
-<td>??/&nbsp;&nbsp;&nbsp;&nbsp;<code>\</code></td>
-</tr>
-<tr>
-<td>??!&nbsp;&nbsp;&nbsp;&nbsp;`</td>
-<td>`</td>
-<td>??’&nbsp;&nbsp;&nbsp;&nbsp;<code>^</code></td>
-<td>??-&nbsp;&nbsp;&nbsp;&nbsp;<code>~</code></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><strong>2. 三字母词(trigraph sequence)</strong><br>在ANSI标准中，定义了“三字母词”，或者成为“三联符序列”，英文为”trigraph sequences”。主要就是几个字符的序列合起来表示另一个字符，使得C环境在某些字符缺失的字符集上仍然可以实现。<br>但是，有的编译器因为C版本的原因是不响应三字母词的<br>如果需要三字母的响应，需要在编译时指定C版本(C99是响应的)<br>9个三字母词</p>
 <p><strong>3. C语言环境概念</strong><br>在ANSI C的任何一种实现中，存在两种不同的环境。第一种是<strong>翻译环境(translation environment)</strong>，第二种是<strong>执行环境(execution environemnt)</strong>。两种环境不必位于同一台机器上。</p>
 <ul>
 <li>翻译环境<br>翻译大致有两个步骤，第一步是预处理器处理阶段，第二步是编译与链接阶段。翻译过程主要完成一个程序的每个(或多个)源文件通过编译转换为<strong>目标代码</strong>,然后各个目标文件由<strong>链接器(linker)</strong>捆绑在一起，形成一个单一的可执行程序。<ul>
 <li>预处理器处理阶段<br>这个阶段，预处理器在源代码上执行一些文本操作。例如，用实际值代替<code>#define</code>指令定义的符号，以及读入由<code>#include</code>指令包含的文件的内容.</li>
 <li>编译与链接阶段<br>这个阶段是产生绝大多数错误与信息的地方，经过编译，源文件变为目标代码，编译阶段，我们还可以加入需要优化的选项，相应的<strong>优化器(optimizer)</strong>就会对目标代码作进一步的处理。<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B.PNG" alt="编译过程"></li>
-<li>编译与链接命令<br>在绝大多数UNIX系统(或UNIX-like(linux)系统)以及VSCODE(需要经过设置操作，VSCODE本身只是一个文本编辑器)中,我们用的C编译器一般是<code>gcc</code>,，命令行中的调用方法<ul>
-<li>编译单个源文件<br><code>gcc program.c</code><br>该命令产生一个<code>a.out</code>(windows下为<code>a.exe</code>)的可执行程序(如果步指定文件名，默认设置文件名为<code>a</code>),<font color=red>但是在这个过程中生成的单个的目标文件<code>program.o</code>(windows下为program.obj)在最后会被删除</font><br>设置文件名方法<br><code>gcc -o xxx program.c</code><br>该命令生成<code>xxx.out</code>的可执行文件</li>
+<li>编译与链接命令<br>在绝大多数UNIX系统(或UNIX-like(linux)系统)以及VSCODE(需要经过设置操作，VSCODE本身只是一个文本编辑器)中,我们用的C编译器一般是<code>gcc</code>.<br>命令行中的调用方法<ul>
+<li>编译单个源文件<br><code>gcc program.c</code><br>该命令产生一个<code>a.out</code>(windows下为<code>a.exe</code>)的可执行程序(提示：如果不指定文件名，默认设置文件名为<code>a</code>),<font color=red>但是在这个过程中生成的单个的目标文件<code>program.o</code>(windows下为program.obj)在最后会被删除</font><br>设置文件名方法<br><code>gcc -o xxx program.c</code><br>该命令生成<code>xxx.out</code>(windows下为<code>xxx.exe</code>)的可执行文件</li>
 <li>编译多个C源文件<br><code>gcc main.c sort.c lookup.c</code><br>在编译的源文件超过一个时，目标文件便不会被删除，这就允许对改动的源文件进行单独编译</li>
 </ul>
 </li>
@@ -668,6 +638,54 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法，算法分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">tf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">step</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linear system analyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">rlocus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">筛选法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">错误记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编码错误</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">生活学习感悟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">信息获取</a>
               </li>
             
             <div class="clearfix"></div>

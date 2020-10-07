@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C和指针-chapter3收获 | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人记录分享网站">
+  <meta name="description" content="这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。 1. 基本数据类型C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，指针(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)  整型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C和指针-chapter3收获">
 <meta property="og:url" content="http://yoursite.com/2020/09/08/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter3%E6%94%B6%E8%8E%B7/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="个人记录分享网站">
+<meta property="og:description" content="这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。 1. 基本数据类型C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，指针(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)  整型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-08T11:14:09.000Z">
-<meta property="article:modified_time" content="2020-09-08T11:15:28.517Z">
+<meta property="article:modified_time" content="2020-09-19T10:44:18.915Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
 <meta name="twitter:card" content="summary">
@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 28
+			总文章数 34
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -177,7 +177,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。</p>
+<p><strong>1. 基本数据类型</strong><br>C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，<font color=red>指针</font>(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)</p>
+<ul>
+<li>整型<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整型主要包括字符型、短整型、整型、长整型、枚举类型中的元素，切记字符型在本质上也是小整型<br>ANSI C规定了各种整型值的最小允许范围,对于机器结构差异特别大的情况下非常有帮助，例如：<code>short int</code>至少16位，<code>long int</code>至少32位。<br><strong>长整型至少应该和整型一样长，而整型至少应该和短整型一样长。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头文件<code>limits.h</code>说明了各种不同的整型类型的特点,同时也提示我们在进行程序移植时要注意的问题，因为对于缺省的类型来,该类型到底是<code>signed</code>类型还是<code>unsigned</code>类型,缺省的<code>int</code>到底是16位的还是32位的，是由编译器决定的,同样缺省的char要么是<code>signed char</code>,要么是<code>unsigned char</code>,这也取决于编译器。所以对一个可移指的程序,只有当所使用的字符位于<code>signed char</code>和<code>unsigned char</code>的交集之中，这个程序才是可以移指的。</li>
+</ul>
+
       
 
       
@@ -305,6 +310,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/09/09/Git/origin%E7%9A%84%E7%B2%97%E7%95%A5%E7%90%86%E8%A7%A3(%E6%9C%AA%E8%AF%A6%E7%BB%86%E7%9C%8B%E4%B9%A6)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          origin的粗略理解(未详细看书)
+        
+      </div>
+    </a>
   
   
     <a href="/2020/09/06/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter2%E6%94%B6%E8%8E%B7/" id="article-nav-older" class="article-nav-link-wrap">
@@ -604,6 +618,54 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">数据结构与算法，算法分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">tf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">step</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linear system analyzer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">rlocus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">筛选法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">错误记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编码错误</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">生活学习感悟</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">信息获取</a>
               </li>
             
             <div class="clearfix"></div>
