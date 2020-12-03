@@ -479,7 +479,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>首先计算机系统在启动时都会打开三个流，一个用于输入，一个用于输出，一个用于打印错误信息，依赖于父进程选择的不同，它们会被链接到各种东西(文件或设备或终端)</p>
+<ul>
+<li>输入流称为”standard input”,指从键盘输入</li>
+<li>输出流称为”standard output”,默认为显示器</li>
+<li>错误流称为”standard error”，默认为显示器</li>
+</ul>
+<p>程序里面引用这些文件的符号是<code>stdin,stdout,stderr</code>,与这些流文件相关联的整数形式的文件描述符分别是<code>0,1,2</code>,将他们与输入标准的输入输出函数。<br>一般我们的理解是这样的，要从显示屏上输出输入要用<code>printf</code>,<code>scanf</code>，要从文件里面输入输出要用到<code>fprintf</code>,<code>fscanf</code>,两种方法互相替代就需要用到这三种流。<br>考虑一个问题，如果输出很多，一直不停下来，我们不会时时刻刻的去盯着屏幕看，这时我们就可以用文件重定向，将输出定位到文件中。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;stdout Hello ymy\n&quot;</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello bza\n&quot;</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="string">&quot;stdout Hello uuu\n&quot;</span>);</span><br><span class="line">    <span class="built_in">fprintf</span>(<span class="string">&quot;stderr,Hello ccc\n&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这些输出在不做任何改变，直接运行可执行文件的时候没有任何用处。<br>在命令行中运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.exe &gt;test.txt(等价于test.exe 1&gt;test.exe)</span><br></pre></td></tr></table></figure><br>会把带有<code>stdout</code>的输出打印到文件<code>test.txt</code>中<br>在命令行中运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test.exe &gt;test.txt 2&gt;&amp;1</span><br></pre></td></tr></table></figure><br>这是将stdout和stderr重定向到同一文件test.txt文件中。</p>
+<font color=red>stderr，和stdout还有重要的一点区别，stderr是没有缓冲的，他立即输出，而stdout默认是行缓冲，也就是它遇到‘\n’，才向外输出内容，如果你想stdout也实时输出内容，那就在输出语句后加上fflush（stdout），这样就能达到实时输出的效果。</font>
       
 
       
