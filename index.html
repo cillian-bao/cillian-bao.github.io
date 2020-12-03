@@ -64,7 +64,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 34
+			总文章数 38
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -155,6 +155,367 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-错误记录/注释带来的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/03/%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/%E6%B3%A8%E9%87%8A%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/">page</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/03/%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/%E6%B3%A8%E9%87%8A%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-12-03T08:28:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>其实我也很纳闷，注释的语句能出现什么错误啊？<br>可是这个问题在我进行<a target="_blank" rel="noopener" href="https://github.com/cillian-bao/json-tutorial">json项目</a>的可执行文件生成的时候，问题就出现了<br>我觉得主要的问题都在于我用visual studio这个宇宙第一编辑器来编译项目<br>吐槽完毕，下面是真正的错误原因：<br><code>utf8</code>格式出错，有一个注释是/<em> 中文</em>/，这里由于编码问题，中文和英文联合起来，吞掉了注释的<em>/，导致bug。只需要改为/</em> 中文 */<br>所以最根本的解决办法：<br><code>Don&#39;t use chinese</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">错误记录</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">注释错误</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/错误记录//" class="article-tag-list-link color5">错误记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/03/%E9%94%99%E8%AF%AF%E8%AE%B0%E5%BD%95/%E6%B3%A8%E9%87%8A%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C基础知识/C和指针-chapter4收获" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/05/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter4%E6%94%B6%E8%8E%B7/">C和指针-chapter4收获</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/05/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter4%E6%94%B6%E8%8E%B7/" class="archive-article-date">
+  	<time datetime="2020-11-05T09:09:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这一章主要介绍了C语言中的语句,主要说明C语言与其他语言的不同之处。</p>
+<p><strong>1. C语言没有专门的赋值语句</strong><br>C语言没有专门的赋值语句，而是用”表达式语句”来代替.赋值就是一种操作</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/c//" class="article-tag-list-link color2">c</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/c/基础知识//" class="article-tag-list-link color5">基础知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/05/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter4%E6%94%B6%E8%8E%B7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MFC学习/车牌识别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/01/MFC%E5%AD%A6%E4%B9%A0/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/">车牌识别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/01/MFC%E5%AD%A6%E4%B9%A0/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/" class="archive-article-date">
+  	<time datetime="2020-11-01T07:21:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="车牌识别基本概念"><a href="#车牌识别基本概念" class="headerlink" title="车牌识别基本概念"></a>车牌识别基本概念</h2><p>一般的做法是把车牌识别分为两个过程:<br>车牌检测(plate detection)和字符识别(chars recognition)<br><strong>1.车牌检测:</strong><br>对一个包含车牌的图像进行分析，最终截取出只包含车牌的一个图块。这个步骤的主要目的是降低了在车牌识别过程中的计算量。如果直接对原始的图像进行车牌识别，会非常的慢，因此需要检测的过程。在本系统中，<font color=red>我们使用SVM（支持向量机）这个机器学习算法</font>去判别截取的图块是否是真的“车牌<br><strong>2.字符识别:</strong><br>主要目的就是从上一个车牌检测步骤中获取到的车牌图像，进行光学字符识别（OCR）这个过程。其中<font color=red>用到的机器学习算法是著名的人工神经网络（ANN）中的多层感知机（MLP）模型</font>。最近一段时间非常火的“深度学习”其实就是多隐层的人工神经网络，与其有非常紧密的联系。通过了解光学字符识别（OCR）这个过程，也可以知晓深度学习所基于的人工神经网路技术的一些内容<br>检测与识别不是一回事,一个是detection，一个是recognition<br><strong>3.车牌识别两大部分的六大模块:</strong><br>车牌检测部分包括车牌定位(plate locate)，SVM训练(SVM train)，车牌判断(plate judge)</p>
+<ul>
+<li>车牌定位(plate locate)主要思路:如果我们的车牌没有大的旋转或变形，那么其中必然包括很多垂直边缘（这些垂直边缘往往缘由车牌中的字符），如果能够找到一个包含很多垂直边缘的矩形块，那么有很大的可能性它就是车牌<br>字符识别部分包括字符分割，ANN训练，字符识别<br><font color=red>其中的SVM模型与ANN模型，由于使用的是OpenCV提供的类</font><h2 id="车牌识别背后的火热技术"><a href="#车牌识别背后的火热技术" class="headerlink" title="车牌识别背后的火热技术"></a>车牌识别背后的火热技术</h2>大数据的4V理念:Volume(体量)、Varity(多样性)、Velocity(速度)、Value(价值)<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%9A%844V%E7%89%B9%E5%BE%81.png" alt="大数据的4V特征"><h2 id="车牌识别的代码实现细节"><a href="#车牌识别的代码实现细节" class="headerlink" title="车牌识别的代码实现细节"></a>车牌识别的代码实现细节</h2><strong>1.plate_locate过程</strong></li>
+<li>代码的鲁棒性<br>对于开源项目中的SVM预训练模型都是基于基于交通抓拍场景的图片制作，因此有可能对于生活中的车牌照效果并不是很好。我们可以修改“Plate Locate”的改造，同时仍然使用整体架构，因为对于后面的字符识别是通用的。<br>在“Plate Locate”过程中，有一些参数可以调整。如果通过调整这些参数就可以使程序良好工作，那最好不过。当这些参数也不能够满足需求时，就需要完全修改项目第一部分的实现代码。<br>在项目中，“Plate Locate”过程被封装成了一个“CPlateLocate”类，通过“plate_locate.h”声明，在“plate_locate.cpp”中实现</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/实际项目//" class="article-tag-list-link color5">实际项目</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/01/MFC%E5%AD%A6%E4%B9%A0/%E8%BD%A6%E7%89%8C%E8%AF%86%E5%88%AB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C基础知识/数组指针与指针数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/12/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/">数组指针与指针数组</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/12/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2020-10-12T12:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>C语言中容易直接让人看不懂的两种指针相关类型——数组指针与指针数组<br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">指针</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">C</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C//" class="article-tag-list-link color2">C</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/C/基本语法//" class="article-tag-list-link color5">基本语法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/12/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-matlab学习/传递函数tf" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -674,377 +1035,6 @@
 
 
   
-    <article id="post-C基础知识/C和指针-chapter3收获" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/08/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter3%E6%94%B6%E8%8E%B7/">C和指针-chapter3收获</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/08/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter3%E6%94%B6%E8%8E%B7/" class="archive-article-date">
-  	<time datetime="2020-09-08T11:14:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。</p>
-<p><strong>1. 基本数据类型</strong><br>C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，<font color=red>指针</font>(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)</p>
-<ul>
-<li>整型<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整型主要包括字符型、短整型、整型、长整型、枚举类型中的元素，切记字符型在本质上也是小整型<br>ANSI C规定了各种整型值的最小允许范围,对于机器结构差异特别大的情况下非常有帮助，例如：<code>short int</code>至少16位，<code>long int</code>至少32位。<br><strong>长整型至少应该和整型一样长，而整型至少应该和短整型一样长。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头文件<code>limits.h</code>说明了各种不同的整型类型的特点,同时也提示我们在进行程序移植时要注意的问题，因为对于缺省的类型来,该类型到底是<code>signed</code>类型还是<code>unsigned</code>类型,缺省的<code>int</code>到底是16位的还是32位的，是由编译器决定的,同样缺省的char要么是<code>signed char</code>,要么是<code>unsigned char</code>,这也取决于编译器。所以对一个可移指的程序,只有当所使用的字符位于<code>signed char</code>和<code>unsigned char</code>的交集之中，这个程序才是可以移指的。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/c//" class="article-tag-list-link color2">c</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/c/基础知识//" class="article-tag-list-link color5">基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/08/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter3%E6%94%B6%E8%8E%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C基础知识/C和指针-chapter2收获" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/06/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter2%E6%94%B6%E8%8E%B7/">C和指针-chapter2收获</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/06/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter2%E6%94%B6%E8%8E%B7/" class="archive-article-date">
-  	<time datetime="2020-09-06T12:36:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《C和指针》第二章总结<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/c//" class="article-tag-list-link color2">c</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/c/基本语法//" class="article-tag-list-link color5">基本语法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/06/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter2%E6%94%B6%E8%8E%B7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-python基础/变量与数据类型及其操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/06/python%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E6%93%8D%E4%BD%9C/">变量与数据类型及其操作</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/06/python%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E6%93%8D%E4%BD%9C/" class="archive-article-date">
-  	<time datetime="2020-09-06T03:35:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>主要记录一些容易忘记和忽略的python基础知识点<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">变量</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据类型</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/python/基础知识//" class="article-tag-list-link color5">基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/06/python%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E5%85%B6%E6%93%8D%E4%BD%9C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C基础知识/stderr,stdin,stdout" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/05/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/stderr,stdin,stdout/">stdout,stdin,stderr的解释</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/05/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/stderr,stdin,stdout/" class="archive-article-date">
-  	<time datetime="2020-09-05T13:21:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">c</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">输入输出定向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/c//" class="article-tag-list-link color2">c</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/c/基础知识//" class="article-tag-list-link color5">基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/05/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/stderr,stdin,stdout/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1223,10 +1213,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地址</a>
               </li>
              
@@ -1240,6 +1226,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">结构体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1275,15 +1265,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">输入输出定向</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">条件编译</a>
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1291,11 +1277,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">python图片读取</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">python基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">条件编译</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1308,18 +1314,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法，算法分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">VS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1336,6 +1330,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">rlocus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法，算法分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,6 +1358,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">信息获取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">注释错误</a>
               </li>
             
             <div class="clearfix"></div>

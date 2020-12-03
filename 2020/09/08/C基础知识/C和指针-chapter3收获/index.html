@@ -8,18 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>C和指针-chapter3收获 | cillianの个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。 1. 基本数据类型C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，指针(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)  整型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
+  <meta name="description" content="这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。 1. 基本数据类型C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，指针(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)  1.1整型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C和指针-chapter3收获">
 <meta property="og:url" content="http://yoursite.com/2020/09/08/C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/C%E5%92%8C%E6%8C%87%E9%92%88-chapter3%E6%94%B6%E8%8E%B7/index.html">
 <meta property="og:site_name" content="cillianの个人站">
-<meta property="og:description" content="这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。 1. 基本数据类型C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，指针(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)  整型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp">
+<meta property="og:description" content="这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。 1. 基本数据类型C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，指针(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)  1.1整型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E9%97%AE%E9%A2%98.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/%E5%BD%A2%E5%8F%82%E5%86%B2%E7%AA%81.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7.PNG">
+<meta property="og:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/extern%E4%BD%9C%E7%94%A8.PNG">
 <meta property="article:published_time" content="2020-09-08T11:14:09.000Z">
-<meta property="article:modified_time" content="2020-09-19T10:44:18.915Z">
+<meta property="article:modified_time" content="2020-11-05T08:59:58.101Z">
 <meta property="article:author" content="泽安的个人站">
 <meta property="article:tag" content="c">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/cillian-bao/picture/master/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E9%97%AE%E9%A2%98.PNG">
   
     <link rel="alternative" href="/atom.xml" title="cillianの个人站" type="application/atom+xml">
   
@@ -67,7 +72,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 34
+			总文章数 38
 			</nav>
 		<nav class="header-smart-menu">
     		
@@ -180,7 +185,31 @@
         <p>这一章主要介绍了变量的”可视性”(也就是它可以在什么地方使用)和”生命周期”(它的值将保持多久),主要的实质性内容是数据的类型以及变量的属性(作用域,链接属性和存储类型)。</p>
 <p><strong>1. 基本数据类型</strong><br>C语言中(从最大角度概括来说)只有四种基本类型——整型，浮点型，<font color=red>指针</font>(这里特别要注意的指针也是一种类型)，聚合类型(结构体，数组)</p>
 <ul>
-<li>整型<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整型主要包括字符型、短整型、整型、长整型、枚举类型中的元素，切记字符型在本质上也是小整型<br>ANSI C规定了各种整型值的最小允许范围,对于机器结构差异特别大的情况下非常有帮助，例如：<code>short int</code>至少16位，<code>long int</code>至少32位。<br><strong>长整型至少应该和整型一样长，而整型至少应该和短整型一样长。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头文件<code>limits.h</code>说明了各种不同的整型类型的特点,同时也提示我们在进行程序移植时要注意的问题，因为对于缺省的类型来,该类型到底是<code>signed</code>类型还是<code>unsigned</code>类型,缺省的<code>int</code>到底是16位的还是32位的，是由编译器决定的,同样缺省的char要么是<code>signed char</code>,要么是<code>unsigned char</code>,这也取决于编译器。所以对一个可移指的程序,只有当所使用的字符位于<code>signed char</code>和<code>unsigned char</code>的交集之中，这个程序才是可以移指的。</li>
+<li>1.1整型<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整型主要包括字符型、短整型、整型、长整型、枚举类型中的元素，切记字符型在本质上也是小整型<br>ANSI C规定了各种整型值的最小允许范围,对于机器结构差异特别大的情况下非常有帮助，例如：<code>short int</code>至少16位，<code>long int</code>至少32位。<br><strong>长整型至少应该和整型一样长，而整型至少应该和短整型一样长。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头文件<code>limits.h</code>说明了各种不同的整型类型的特点,同时也提示我们在进行程序移植时要注意的问题，因为对于缺省的类型来,该类型到底是<code>signed</code>类型还是<code>unsigned</code>类型,缺省的<code>int</code>到底是16位的还是32位的，是由编译器决定的,同样缺省的char要么是<code>signed char</code>,要么是<code>unsigned char</code>,这也取决于编译器。所以对一个可移指的程序,只有当所使用的字符位于<code>signed char</code>和<code>unsigned char</code>的交集之中，这个程序才是可以移指的。</li>
+<li>1.1.1整型字面值(字面值常量)<br>自身的值是固定的。<br>当一个程序中出现整型字面值时，我们一般通过在字面值的后面添加一个后缀来改变缺省的规则。<br>xxxL,该变量被解释为long整型值<br>xxxU,该变量被解释为unsigned整型值<br>在不同的场合下，我们用不同的方式表示整型字面值<br>不同的方式可能包括：十进制，八进制，十六进制，字符常量(只能是int,不可加后缀改变缺省规则)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$-275^&#123;2&#125;$</span><br><span class="line">0173</span><br><span class="line">0x7b</span><br><span class="line">&#39;M&#39;</span><br></pre></td></tr></table></figure>
+不同场合的应用：<br>当一个字面值用于确定一个字中某些特定位的位置时，将他写成十六进制或八进制(单片机编程，例如:0xF0000,很快可以看出16-19位为1，其余为0)<br>如果一个值被表示成字符使用，那么这个值表示为字符常量的相关运算更能表示其含义<br>例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">value&#x3D;value-&#39;0&#39;; &#96;yes!!!!&#96;</span><br><span class="line">value&#x3D;value-48; &#96;No!!!!&#96;</span><br></pre></td></tr></table></figure></li>
+<li>1.1.2枚举类型(本质上是整形数据)<br>枚举类型就是指它的值为符号常量而不是字面值的类型<br>可以为这些符号名指定特定的整型值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum Jar_Type&#123;CUP&#x3D;8,PINT&#x3D;16,QUART&#x3D;32,HALF_GALLON&#x3D;64,GALLON&#x3D;18&#125;;</span><br></pre></td></tr></table></figure>
+只对部分符号名赋值的方式也是允许的，如果某个符号名未显式指定一个值，那么它的值就比前面一个符号名的值大1.</li>
+<li>1.2浮点数<br>浮点型家族主要包括float,double,long double类型，这些类型分别提供单精度、双精度以及扩展精度,不能用另外的说明符界定(short,signed,unsigned)<br>头文件float.h定义了各种不同的浮点型的最大值，最小值<br>缺省的浮点字面值在缺省情况下都是double类型的，除非它的后面跟一个<code>L</code>或者一个<code>F</code>。</li>
+<li>1.3指针<br>指针可以有效的实现tree和list这类高级数据结构，这也是C语言如此流行的原因。<br><strong>2. 基本声明</strong><br>$说明符(一个或多个)   声明表达式列表$<br>声明指针时，需要注意：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个声明只能把b声明为指向一个整型的指针，而c,d为基本的int类型</span></span><br><span class="line"><span class="comment">//第二个声明才能正确的声明三个指针</span></span><br><span class="line"><span class="keyword">int</span>* b,c,d;</span><br><span class="line"><span class="keyword">int</span> *b,*c,*d;</span><br></pre></td></tr></table></figure>
+<strong>3.typedef</strong><br>使用typedef可以减少使声明变得又臭又长的危险，而且在修改程序中所使用的一些数据的类型时，修改一个typedef要简单的多<br><strong>4. 作用域</strong><br>程序中声明的变量，只有在程序的一定区域才能被访问。这个区域是由标识符的作用域决定。<br>编译器可以确认4种不同类型的作用域——文件作用域，函数作用域，代码块作用域和原型作用域。</li>
+<li>4.1代码块作用域(block scope)<br>代码块:位于一对花括号之间的所有语句称为一个代码块<br>任何在代码块的开始位置声明的标识符都具有代码块作用域，表示它们可以被这个代码块中的所有语句访问。<br>当代码块处于嵌套时，声明于内层代码块的标识符的作用域达到该代码块的尾部便告终止。然而，如果内层代码块有一个标识符的名字与外层代码块的一个标识符同名，内层的那个标识符就将隐藏外层的标识符——外层的那个标识符无法在内层代码块中通过名字来访问。<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E9%97%AE%E9%A2%98.PNG" alt="作用域"><br>图中标识6，7，9，10声明的变量具有代码块作用域。<br>函数形参的作用域开始于形参的声明处,并且在ANSI C中不允许出现函数体内部声明与形参相同的局部变量，以下是测试代码与错误展示。<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a,b;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    c=add(a,b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">int</span> c;</span><br><span class="line">    c=a+b;</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+出现的错误<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/%E5%BD%A2%E5%8F%82%E5%86%B2%E7%AA%81.PNG" alt="形参与局部变量冲突"></li>
+<li>4.2文件作用域(file scope)<br>任何在代码块之外声明的标识符都具有文件作用域，这些标识符从它们的声明之处直到它们所在的源文件结尾都是可以访问的<br><font color=red>warning</font>:文件中定义的函数名也具有文件作用域，因为函数名本身不属于任何代码块<br>所以在头文件中定义的函数，通过include包含后，起的作用与在源文件中声明的一样。</li>
+<li>4.3原型作用域(prototype scope)<br>原型作用域只适用于在函数原型中声明的参数名，意义不大。</li>
+<li>4.4函数作用域<br>意义不大<br><strong>5. 链接属性</strong><br>组成一个程序的各个源文件被分别编译之后，所有的目标文件以及那些从一个或多个函数库中引用的函数链接在一起，形成可执行程序。<br>标识符的链接属性(linkage)可以处理不同文件中出现的标识符，标识符的链接属性会影响它的作用域。<br>链接属性——external(外部)、internal(内部)和none(无)</li>
+<li>没有链接属性的标识符总是被当作单独的个体，也就是说该标识符的多个声明被当作独立不同的实体.</li>
+<li>属于internal链接属性的标识符在同一个源文件内的所有声明都指同一个实体，但位于不同源文件的多个声明则分属不同的实体。</li>
+<li>属于external链接属性的标识符无论声明多少次、位于几个源文件都表示同一个实体。<br>关键字extern(注意关键字(extern)和链接属性(external)不一样)与static用于在声明中修改标识符的链接属性，它们还可以互相改变标识符的类型属性。<br><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/%E9%93%BE%E6%8E%A5%E5%B1%9E%E6%80%A7.PNG" alt="链接属性示例"></li>
+</ul>
+<hr>
+<p><img src="https://raw.githubusercontent.com/cillian-bao/picture/master/extern%E4%BD%9C%E7%94%A8.PNG" alt="extern作用说明"><br>static一般只用于改变<font color=red>代码块之外</font>的标识符链接属性，使其为internal。</p>
+<p><font color=red>extern只能改变源文件中一个标识符的第一次声明，而不能改变第二次及以后的声明</font><br>如上图的k,extern是起作用的，而对于声明4处的i是不起作用的，因为声明1已经声明过一次了。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> b;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">c</span><span class="params">(<span class="keyword">int</span> d)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>变量b与函数c将为源文件私有而不能被其他源文件调用<br>static只对缺省类型为external的声明才有改变链接属性的效果，在上图中不能改变e的链接属性，因为其缺省类型为none<br><strong>6. 存储类型</strong><br>变量的存储类型(storge class)指的是存储变量值的内存类型。变量的存储类型决定变量何时创建，何时销毁。<br>存储变量的地方——普通内存、运行时堆栈、硬件寄存器<br>缺省的变量的存储类型取决于它的声明位置</p>
+<ul>
+<li>任何代码块之外声明的变量或者具有external属性的变量总是存储在静态内存中，也就是不属于堆栈的内存，它们在程序运行之前创建，在程序的整个执行期间始终存在。</li>
+<li>在代码块内部声明的变量的缺省存储类型都是运行时堆栈，在程序运行到声明自动变量的代码块时，变量才被创建，当程序的执行流离开该代码块时，变量便自行销毁。对于这些变量给其加上关键字<font color=red>static</font>,可以使它的存储类型从自动类型变为静态类型。<br>static一般用于改变<font color=red>代码块内部</font>的标识符的存储位置,在代码中遇到时，注意一一对应。<font color=red>函数的形式参数不能声明为静态，因为实参总是在堆栈中传给函数，用于支持递归</font></li>
+<li>register的功能比较鸡肋，或者说我看不懂<br><strong>变量初始化的一些要点</strong><br>静态变量的初始化花费的开销小，静态变量不显式初始化时，初始化为0<br>自动变量的初始化花费的开销大,我们必须清楚,函数的局部变量在程序链接时还无法判断自动变量的存储位置，显式的初始化将在代码块的起始处插入一条隐式的赋值语句。</li>
 </ul>
 
       
@@ -529,10 +558,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">地址</a>
               </li>
              
@@ -546,6 +571,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">结构体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">字符，字符串</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,15 +610,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">输入输出定向</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">条件编译</a>
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,11 +622,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">python图片读取</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">C</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">python基础语法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">条件编译</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,18 +659,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据类型</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法，算法分析</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">VS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MFC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,6 +675,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">rlocus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数据结构与算法，算法分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -666,6 +703,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">信息获取</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">注释错误</a>
               </li>
             
             <div class="clearfix"></div>
